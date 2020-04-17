@@ -11,7 +11,6 @@
         <property name="connection.password">MySQLicui4cuL</property><!--Your password-->
         <property name="hibernate.hbm2ddl.auto">create</property>
 
-        <mapping class="by.itcollege.entity.Painting"/>
-        <mapping class="by.itcollege.entity.Hero"/>
+        <mapping class="by.work_company.entity.User"/>
     </session-factory>
 </hibernate-configuration>
