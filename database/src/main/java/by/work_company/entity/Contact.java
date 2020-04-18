@@ -13,8 +13,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="contacts")
-public class Contact {
-
+public class Contact extends BaseEntity{
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

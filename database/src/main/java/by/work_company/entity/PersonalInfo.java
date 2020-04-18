@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="personal_info")
-public class PersonalInfo {
+public class PersonalInfo extends BaseEntity {
 
     @OneToOne
     @JoinColumn(name = "user_id")
