@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 
 @Entity
-@Table(name="presonal_info")
+@Table(name="personal_info")
 public class PersonalInfo {
 
     @OneToOne

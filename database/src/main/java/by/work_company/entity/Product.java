@@ -22,17 +22,17 @@ public class Product extends BaseEntity{
     private String name;
 
     @Column (name = "price")
-    private int price;
+    private double price;
 
     @ManyToOne
     @JoinColumn(name = "subcategory_id")
     private Subcategory subcategory;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
     private User seller;
 
-    @Column(name = "destription")
+    @Column(name = "description")
     private String description;
 
     @ManyToMany(mappedBy = "products")

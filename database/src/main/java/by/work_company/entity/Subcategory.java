@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 
 @Entity
-@Table(name="subcategory")
+@Table(name="subcategories")
 public class Subcategory extends BaseEntity {
 
     @Column(name = "name")

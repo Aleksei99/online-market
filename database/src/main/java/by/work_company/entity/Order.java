@@ -22,7 +22,7 @@ public class Order extends BaseEntity {
 
     @ManyToMany
     @JoinTable(
-            name = "order_basket",
+            name = "orders_basket",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id")
     )
