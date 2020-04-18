@@ -18,10 +18,10 @@ public class PersonalInfo {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Column(name = "login", unique = true)
+    @Column(name = "login", unique = true, nullable = false)
     private String login;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
 }

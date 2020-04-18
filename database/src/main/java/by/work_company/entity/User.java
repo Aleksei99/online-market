@@ -14,10 +14,10 @@ import javax.persistence.*;
 @Table(name="users")
 public class User extends BaseEntity{
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "surname")
+    @Column(name = "surname", nullable = false)
     private String surname;
 
     @Enumerated(EnumType.STRING)

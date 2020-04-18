@@ -14,10 +14,10 @@ import javax.persistence.*;
 @Table(name="subcategory")
 public class Subcategory extends BaseEntity {
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 }

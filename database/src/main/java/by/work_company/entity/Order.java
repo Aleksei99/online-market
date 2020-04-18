@@ -17,7 +17,7 @@ import java.util.Set;
 public class Order extends BaseEntity {
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToMany
@@ -28,7 +28,7 @@ public class Order extends BaseEntity {
     )
     private Set<Product> products;
 
-    @Column (name = "time_order")
+    @Column (name = "time_order", nullable = false)
     private Date timeOrder;
 
 

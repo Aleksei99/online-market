@@ -15,21 +15,21 @@ import java.util.Set;
 @Table(name="products")
 public class Product extends BaseEntity{
 
-    @Column(name = "brand")
+    @Column(name = "brand", nullable = false)
     private String brand;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column (name = "price")
+    @Column (name = "price", nullable = false)
     private int price;
 
     @ManyToOne
-    @JoinColumn(name = "subcategory_id")
+    @JoinColumn(name = "subcategory_id", nullable = false)
     private Subcategory subcategory;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User seller;
 
     @Column(name = "destription")
