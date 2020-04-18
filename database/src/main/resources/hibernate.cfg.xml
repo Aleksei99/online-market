@@ -8,9 +8,15 @@
         <property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/online_market?serverTimezone=UTC</property>
         <property name="connection.username">root</property><!--Your username-->
-        <property name="connection.password">MySQLicui4cuL</property><!--Your password-->
+        <property name="connection.password">root</property><!--Your password-->
         <property name="hibernate.hbm2ddl.auto">create</property>
 
         <mapping class="by.work_company.entity.User"/>
+        <mapping class="by.work_company.entity.Order"/>
+        <mapping class="by.work_company.entity.Contact"/>
+        <mapping class="by.work_company.entity.PersonalInfo"/>
+        <mapping class="by.work_company.entity.Product"/>
+        <mapping class="by.work_company.entity.Subcategory"/>
+        <mapping class="by.work_company.entity.Category"/>
     </session-factory>
 </hibernate-configuration>
