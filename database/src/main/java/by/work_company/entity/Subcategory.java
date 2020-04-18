@@ -11,8 +11,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 
 @Entity
-@Table(name="subcategories")
-public class Subcategory extends BaseEntity{
+@Table(name="subcategory")
+public class Subcategory extends BaseEntity {
 
     @Column(name = "name")
     private String name;
@@ -20,5 +20,4 @@ public class Subcategory extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-
 }
