@@ -13,7 +13,7 @@
     <artifactId>web</artifactId>
 
     <properties>
-        <spring.version>4.3.8.RELEASE</spring.version>
+        <spring.version>5.2.7.RELEASE</spring.version>
         <hibernate.version>5.2.10.Final</hibernate.version>
     </properties>
 
