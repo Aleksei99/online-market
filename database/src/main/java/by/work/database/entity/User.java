@@ -22,4 +22,7 @@ public class User extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToOne
+    private PersonalInfo personalInfo;
 }

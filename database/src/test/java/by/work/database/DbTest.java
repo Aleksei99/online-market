@@ -1,4 +1,4 @@
-package by.work.database.web;
+package by.work.database;
 
 import by.work.database.config.DaoConfig;
 import by.work.database.entity.User;

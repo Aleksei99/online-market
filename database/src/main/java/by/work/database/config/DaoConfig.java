@@ -20,7 +20,7 @@ import java.util.Properties;
 @Configuration
 @PropertySource("classpath:config.properties")
 @EnableJpaRepositories(basePackages = "by.work.database")
-@ComponentScan("by.work.database")
+@ComponentScan(basePackages = {"by.work"})
 public class DaoConfig {
     @Value("${database.url}")
     private String url;
