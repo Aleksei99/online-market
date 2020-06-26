@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, PersonalInfoService {
 
     private final UserRepository userRepository;
     private final PersonalInfoRepository personalInfoRepository;
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     public UserServiceImpl(final UserRepository userRepository, final PersonalInfoRepository personalInfoRepository) {
         this.userRepository = userRepository;
-        this.personalInfoRepository=personalInfoRepository;
+        this.personalInfoRepository = personalInfoRepository;
     }
 
 
@@ -39,6 +39,16 @@ public class UserServiceImpl implements UserService {
         return userRepository.findUserById(id)
                 .map(this::convert)
                 .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    @Override
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public void save(PersonalInfo personalInfo) {
+        personalInfoRepository.save(personalInfo);
     }
 
     private UserDTO convert(User user) {
@@ -55,11 +65,11 @@ public class UserServiceImpl implements UserService {
         Set<Role> roles = new HashSet<>();
         if (Objects.isNull(personalInfo)) {
             throw new UsernameNotFoundException("User with username " + username + " not found");
-        }else
+        } else
             System.out.println("SUCCESS");
-            roles.add(personalInfo.getUser().getRole());
-            return new org.springframework.security.core.userdetails
-                    .User(personalInfo.getUser().getName(), personalInfo.getPassword(), convertRole(roles));
+        roles.add(personalInfo.getUser().getRole());
+        return new org.springframework.security.core.userdetails
+                .User(personalInfo.getUser().getName(), personalInfo.getPassword(), convertRole(roles));
 
     }
 

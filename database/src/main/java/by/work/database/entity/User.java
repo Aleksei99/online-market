@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Setter
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
+
 
 @Entity
 @Table(name="users", schema = "online_market")
@@ -23,6 +23,10 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    @OneToOne
-    private PersonalInfo personalInfo;
+
+    public User(String name,String surname,Role role) {
+        this.name=name;
+        this.surname=surname;
+        this.role=role;
+    }
 }

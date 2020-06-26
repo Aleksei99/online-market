@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>registration</title>
 </head>
 <body>
 <p> Here will be registration Page</p>
+<form th:action="@{/registration}" method="post" th:object="${user}">
+    <label for="name">Name:</label>
+    <input type="text" th:field="*{name}" id="name">
+    <label for="surname">Surname:</label>
+    <input type="text" th:field="*{surname}" id="surname">
+    <select id="role" th:field="*{role}">
+        <option th:each="role : ${allRoles}"
+        th:text="${#strings.capitalize(#strings.toLowerCase(role))}"
+        th:value="${role}">
+        </option>
+    </select><br>
+    <br>
+    <input type="submit" id="send" value="Continue">
+</form>
 </body>
 </html>
