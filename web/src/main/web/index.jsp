@@ -1,69 +1,97 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: User
-  Date: 17.04.2020
-  Time: 19:53
-  To change this template use File | Settings | File Templates.
---%>
-<%-- Created by IntelliJ IDEA. --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>online-market</title>
+  <title>Page Title</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {font-family: Arial, Helvetica, sans-serif;}
-    form {border: 3px solid #f1f1f1;}
-
-    input[type=text], input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
+    * {
       box-sizing: border-box;
     }
-    p{
-      color: #4CAF50;
-    }
-    h1{
-      color: orange;
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
     }
 
-    button {
-      background-color: #4CAF50;
+    /* Style the header */
+    .header {
+      padding: 220px;
+      text-align: center;
+      background: #1abc9c;
       color: white;
+    }
+
+    /* Increase the font size of the h1 element */
+    .header h1 {
+      font-size: 40px;
+    }
+
+    /* Style the top navigation bar */
+    .navbar {
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+
+    /* Style the navigation bar links */
+    .navbar a {
+      float: left;
+      display: block;
+      color: #131313;
+      text-align: center;
       padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
+      text-decoration: none;
     }
 
-    button:hover {
-      opacity: 0.8;
+    /* Right-aligned link */
+    .navbar a.right {
+      float: right;
+    }
+
+    /* Change color on hover */
+    .navbar a:hover {
+      background-color: #1abc9c;
+      color: #131313;
     }
 
 
-    /* Change styles for span and cancel button on extra small screens */
-    @media screen and (max-width: 300px) {
-      span.psw {
-        display: block;
+    /* Footer */
+    .footer {
+      font-size: 12pt;
+      padding-bottom: 20px;
+      text-align: center;
+      color: grey;
+    }
+
+
+    /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+    @media screen and (max-width: 400px) {
+      .navbar a {
         float: none;
+        width:100%;
       }
-
     }
   </style>
 </head>
 <body>
-<h1>Welcome</h1>
-<form action="${pageContext.request.contextPath}/login">
-  <button>Log in</button>
-</form>
-<p>Not registered yet?</p>
-<form action="${pageContext.request.contextPath}/registration">
-  <button>Registration</button>
-</form>
+
+<div class="navbar">
+  <a href="#">Products</a>
+  <a href="#">About</a>
+  <a href="#">FAQ</a>
+  <a href="${pageContext.request.contextPath}/login" class="right">Sign in</a>
+  <a href="${pageContext.request.contextPath}/registration" class="right">Sign up</a>
+</div>
+
+<div class="header">
+  <h1>Online market</h1>
+  <p>Quality is when the buyer returns - not the goods</p>
+</div>
+
+
+<div class="footer">
+  Developed by Aleksei Smuraha, Halina Shukel, Valeriy Karpov,Yana Vaitovich, Makar Ivanov
+</div>
 
 </body>
 </html>
