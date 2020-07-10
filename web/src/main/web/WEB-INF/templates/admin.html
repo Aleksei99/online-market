@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="/resources/js/jquery-3.2.1.min.js"></script>
+    <script src="/resources/js/jsLogic.js"></script>
 </head>
 <body>
 <p>Admin Page</p>
+
+<form th:each="category :${categories}"
+      th:action="@{/admin/addSubCategory}" method="post"
+      th:object="${subcategory}">
+
+    <ul><p th:text="${category.name}"></p>
+        <li th:each="subcat :${subcategories}" th:if="${subcat.category.id==category.id}">
+            <span th:text="${subcat.name}"></span>
+        </li>
+    </ul>
+
+    <label for="subcategory">Name of new subCategory</label>
+    <input type="text" th:field="*{name}" id="subcategory">
+    <input type="text" th:name="id" th:value="${category.id}" hidden >
+    <input type="submit" value="add">
+
+</form>
+
+<form th:action="@{/admin/add}" method="post" th:object="${category}" >
+    <label for="category-form-name">Name of new category</label>
+    <input type="text"  th:field="*{name}" id="category-form-name"><br>
+    <input type="submit" onclick="successfullyAdded()" value="Add">
+</form>
+    <p id="category-name"></p>
 </body>
 </html>

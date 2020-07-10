@@ -20,4 +20,9 @@ public class Subcategory extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    public Subcategory(Category category,String name) {
+        this.category=category;
+        this.name=name;
+    }
 }
