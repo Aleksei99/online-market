@@ -169,7 +169,8 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a th:each="category: ${categories}" th:text="${category.name}"></a>
+            <a th:each="category: ${categories}" th:text="${category.name}"
+                th:href="@{/category/{id}(id=${category.id})}"></a>
         </div>
     </div>
     <a href="#">About</a>

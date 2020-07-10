@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Categories of Products</h1>
+<td>
+    <p th:if="${subCategories.isEmpty()}">There are no subCategories</p>
+    <p th:each="subCategory: ${subCategories}" th:unless="${subCategories.isEmpty()}"
+          th:text="${subCategory.name}"></p>
+</td>
+</body>
+</html>

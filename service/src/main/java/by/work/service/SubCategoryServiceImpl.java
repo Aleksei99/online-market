@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -26,5 +27,10 @@ public class SubCategoryServiceImpl implements SubCategoryService{
     @Override
     public Iterable<Subcategory> getAll() {
         return subCategoryRepository.findAll();
+    }
+
+    @Override
+    public List<Subcategory> getAllByCategoryID(Long id) {
+        return subCategoryRepository.findAllByCategory_Id(id);
     }
 }
