@@ -31,6 +31,12 @@
     <input type="text"  th:field="*{name}" id="category-form-name"><br>
     <input type="submit" onclick="successfullyAdded()" value="Add">
 </form>
-    <p id="category-name"></p>
+<!--    <a th:href="@{/logout}">Log out</a>-->
+<a href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>
+
+<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+    <input hidden type="submit" value="Sign Out"/>
+</form>
+<p id="category-name"></p>
 </body>
 </html>

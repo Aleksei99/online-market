@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title>Page Title</title>
     <meta charset="UTF-8">
@@ -163,19 +164,28 @@
 </head>
 <body>
 
-<div class="navbar">
+<div class="navbar" th:fragment="bar">
     <div class="dropdown">
         <button class="dropbtn">Products
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
             <a th:each="category: ${categories}" th:text="${category.name}"
-                th:href="@{/category/{id}(id=${category.id})}"></a>
+               th:href="@{/category/{id}(id=${category.id})}"></a>
         </div>
     </div>
     <a href="#">About</a>
     <a href="#">FAQ</a>
-    <a th:href="@{/login}" class="right">Sign in</a>
+    <div sec:authorize="isAuthenticated()">
+        <a href="javascript: document.logoutForm.submit()" class="right"> Logout</a>
+
+        <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+            <input hidden type="submit" value="Sign Out"/>
+        </form>
+    </div>
+    <div sec:authorize="not isAuthenticated()">
+        <a href="#" th:href="@{/login}" class="right">Log in</a>
+    </div>
     <a th:href="@{/registration}" class="right">Sign up</a>
 </div>
 
