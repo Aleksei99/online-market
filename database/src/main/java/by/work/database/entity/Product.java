@@ -35,6 +35,15 @@ public class Product extends BaseEntity{
     @Column(name = "description")
     private String description;
 
+    public Product(String brand,String name,Double price,Subcategory subcategory,User seller,String description) {
+        this.brand=brand;
+        this.name=name;
+        this.price=price;
+        this.subcategory=subcategory;
+        this.seller=seller;
+        this.description=description;
+    }
+
     @ManyToMany(mappedBy = "products")
     private Set<Order> orders;
 }

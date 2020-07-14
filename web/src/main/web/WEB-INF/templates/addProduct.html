@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>registration</title>
+    <title>Title</title>
     <style>
         * {
             box-sizing: border-box;
@@ -71,7 +71,6 @@
             border-bottom: 2px solid #4a90e2;
             transition: all 0.2s ease;
         }
-
         .form-row select {
             display: block;
             width: 100%;
@@ -92,6 +91,18 @@
             font-weight: 300;
             transform: translateY(-35px);
             transition: all 0.2s ease;
+        }
+
+        .form-row textarea {
+            display: block;
+            width: 100%;
+            padding: 0 20px;
+            margin-bottom: 10px;
+            background: #E9EFF6;
+            line-height: 40px;
+            border-width: 0;
+            border-radius: 20px;
+            font-family: 'Roboto', sans-serif;
         }
 
         .form-row input:focus {
@@ -127,24 +138,32 @@
     </style>
 </head>
 <body>
-<form th:action="@{/registration}" method="post" th:object="${user}" class="ui-form">
-    <h3>Registration</h3>
+<form th:action="@{/Product/add}" th:object="${product}" method="post" class="ui-form">
+    <h3>New Product</h3>
     <div class="form-row">
-        <input type="text" th:field="*{name}" id="name" required autocomplete="off"><label for="name">Name</label>
+        <input type="text" th:field="*{brand}" required autocomplete="off" id="brand"><label for="brand">Brand </label>
     </div>
     <div class="form-row">
-        <input type="text" th:field="*{surname}" id="surname" required autocomplete="off"><label
-            for="surname">Surname</label>
+        <input type="text" th:field="*{name}" required autocomplete="off" id="name"><label for="name">Name </label>
     </div>
     <div class="form-row">
-        <select id="role" th:field="*{role}">
-            <option th:each="role : ${allRoles}"
-                    th:text="${#strings.capitalize(#strings.toLowerCase(role))}"
-                    th:value="${role}">
+        <input type="number" th:field="*{price}" required autocomplete="off" id="price"><label
+            for="price">Price </label>
+    </div>
+    <div class="form-row">
+        <textarea th:field="*{description}" placeholder="Description..." id="description"></textarea>
+    </div>
+    <div class="form-row">
+        <select th:name="subCategoryID">
+            <option disabled>Choose Category</option>
+            <option th:each="subCategory: ${subCategories}"
+                    th:text="${subCategory.name}"
+                    th:value="${subCategory.id}">
             </option>
         </select>
     </div>
-    <input type="submit" id="send" value="Continue">
+    <input type="submit" value="Save">
 </form>
+
 </body>
 </html>

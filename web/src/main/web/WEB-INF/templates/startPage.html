@@ -176,6 +176,9 @@
     </div>
     <a href="#">About</a>
     <a href="#">FAQ</a>
+    <div sec:authorize="hasAuthority('SELLER')">
+        <a th:href="@{/seller/add}">Add Product</a>
+    </div>
     <div sec:authorize="isAuthenticated()">
         <a href="javascript: document.logoutForm.submit()" class="right"> Logout</a>
 

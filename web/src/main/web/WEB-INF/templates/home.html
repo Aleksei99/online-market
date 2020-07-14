@@ -162,6 +162,10 @@
 </head>
 <body>
 <div th:insert="startPage :: bar"></div>
-
+<p>Welcome,
+    <span th:text="${currentUser.name}"> </span>
+    <span th:text="${currentUser.surname}">!</span>
+</p>
+<p ></p>
 </body>
 </html>

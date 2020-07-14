@@ -33,4 +33,9 @@ public class SubCategoryServiceImpl implements SubCategoryService{
     public List<Subcategory> getAllByCategoryID(Long id) {
         return subCategoryRepository.findAllByCategory_Id(id);
     }
+
+    @Override
+    public Subcategory getSubCategory(Long id) {
+        return subCategoryRepository.findById(id);
+    }
 }

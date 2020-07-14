@@ -42,6 +42,11 @@ public class UserServiceImpl implements UserService, PersonalInfoService {
     }
 
     @Override
+    public User findUserById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
     public void save(User user) {
         userRepository.save(user);
     }
@@ -49,6 +54,11 @@ public class UserServiceImpl implements UserService, PersonalInfoService {
     @Override
     public void save(PersonalInfo personalInfo) {
         personalInfoRepository.save(personalInfo);
+    }
+
+    @Override
+    public PersonalInfo findPersonalInfo(String username) {
+        return personalInfoRepository.findByLogin(username);
     }
 
     private UserDTO convert(User user) {
@@ -69,7 +79,7 @@ public class UserServiceImpl implements UserService, PersonalInfoService {
             System.out.println("SUCCESS");
         roles.add(personalInfo.getUser().getRole());
         return new org.springframework.security.core.userdetails
-                .User(personalInfo.getUser().getName(), personalInfo.getPassword(), convertRole(roles));
+                .User(personalInfo.getLogin(), personalInfo.getPassword(), convertRole(roles));
 
     }
 
