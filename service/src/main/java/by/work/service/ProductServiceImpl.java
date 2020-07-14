@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -21,5 +22,10 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public void save(Product product) {
         productRepository.save(product);
+    }
+
+    @Override
+    public List<Product> findProducts(Long id) {
+        return productRepository.findProductsBySubcategory_Id(id);
     }
 }

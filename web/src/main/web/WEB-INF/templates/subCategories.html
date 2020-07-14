@@ -8,8 +8,9 @@
 <h1>Categories of Products</h1>
 <td>
     <p th:if="${subCategories.isEmpty()}">There are no subCategories</p>
-    <p th:each="subCategory: ${subCategories}" th:unless="${subCategories.isEmpty()}"
-          th:text="${subCategory.name}"></p>
+    <div th:each="subCategory: ${subCategories}" th:unless="${subCategories.isEmpty()}">
+        <a th:text="${subCategory.name}" th:href="@{/products/{id}(id=${subCategory.id})}"></a>
+    </div>
 </td>
 </body>
 </html>
