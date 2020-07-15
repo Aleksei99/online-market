@@ -16,7 +16,7 @@ import javax.persistence.*;
 @Table(name="personal_info")
 public class PersonalInfo extends BaseEntity {
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 
