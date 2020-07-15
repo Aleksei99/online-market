@@ -16,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +26,13 @@ import java.util.List;
 @Transactional
 public class ProductServiceTest {
     private static final String BRAND, NAME, DESCRIPTION;
-    private static final double PRICE;
+    private static final BigDecimal PRICE;
 
     static {
         BRAND = "APPLE";
         NAME = "MAC";
         DESCRIPTION = "APPLABLE";
-        PRICE = 999.99;
+        PRICE = BigDecimal.valueOf(999.99);
     }
 
     @Autowired
@@ -60,7 +61,8 @@ public class ProductServiceTest {
 
     @Test
     public void saveTest() {
-        Product product = new Product("BMW", "M8", 50000.99, new Subcategory(), new User(), "Car");
+        BigDecimal price = BigDecimal.valueOf(50000.99);
+        Product product = new Product("BMW", "M8",price, new Subcategory(), new User(), "Car");
         product.setId(2L);
         productService.save(product);
     }
