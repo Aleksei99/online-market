@@ -13,8 +13,9 @@ import javax.persistence.Embeddable;
 @Setter
 @ToString
 @NoArgsConstructor
+
 @Embeddable
-public class Address  {
+public class Address {
 
     @Column(name = "city")
     private String city;

@@ -31,9 +31,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         return new MappingJackson2HttpMessageConverter(mapper);
     }
+
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**")
-                .addResourceLocations("/resources/");
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
+        super.addResourceHandlers(registry);
+        registry.addResourceHandler("/css/**")
+                .addResourceLocations("/WEB-INF/static/css/");
     }
 }

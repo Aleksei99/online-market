@@ -1,6 +1,5 @@
 package by.work.database.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,9 +10,8 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 
-
 @Entity
-@Table(name="personal_info")
+@Table(name = "personal_info")
 public class PersonalInfo extends BaseEntity {
 
     @OneToOne
@@ -26,9 +24,9 @@ public class PersonalInfo extends BaseEntity {
     @Column(name = "password")
     private String password;
 
-    public PersonalInfo(User user,String login,String password) {
-        this.user=user;
-        this.login=login;
-        this.password=password;
+    public PersonalInfo(User user, String login, String password) {
+        this.user = user;
+        this.login = login;
+        this.password = password;
     }
 }

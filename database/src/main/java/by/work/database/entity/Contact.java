@@ -12,8 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 
 @Entity
-@Table(name="contacts")
-public class Contact extends BaseEntity{
+@Table(name = "contacts")
+public class Contact extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

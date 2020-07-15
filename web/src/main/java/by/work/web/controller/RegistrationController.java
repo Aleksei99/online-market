@@ -15,8 +15,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class RegistrationController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public RegistrationController(UserService userService) {
+        this.userService = userService;
+    }
 
     @ModelAttribute("user")
     public User modelUser() {

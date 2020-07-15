@@ -20,6 +20,7 @@ public class ThymeleafConfig {
         resolver.setSuffix(".html");
         return resolver;
     }
+
     @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine engine = new SpringTemplateEngine();
@@ -28,6 +29,7 @@ public class ThymeleafConfig {
         engine.setAdditionalDialects(new HashSet<>(Arrays.asList(new SpringSecurityDialect())));
         return engine;
     }
+
     @Bean
     public ThymeleafViewResolver viewResolver() {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();

@@ -13,17 +13,21 @@ import java.util.List;
 @Controller
 public class StartPageController {
 
+    private final CategoryService categoryService;
+
     @Autowired
-    CategoryService categoryService;
+    public StartPageController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
     @GetMapping("/")
-    public String showPage(Model model){
+    public String showPage(Model model) {
         Iterable<Category> all = categoryService.getAll();
         List<Category> categories = new ArrayList<>();
-        for (Category item: all){
+        for (Category item : all) {
             categories.add(item);
         }
-        model.addAttribute("categories",categories);
+        model.addAttribute("categories", categories);
         return "startPage";
     }
 }

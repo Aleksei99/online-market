@@ -21,9 +21,9 @@ public class ProductsController {
     }
 
     @GetMapping("/products/{id}")
-    public String getPage(@PathVariable("id") Long id, Model model){
+    public String getPage(@PathVariable("id") Long id, Model model) {
         List<Product> products = productService.findProducts(id);
-        model.addAttribute("products",products);
+        model.addAttribute("products", products);
         return "products";
     }
 }

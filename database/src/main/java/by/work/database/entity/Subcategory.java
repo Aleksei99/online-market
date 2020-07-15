@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 
 @Entity
-@Table(name="subcategories")
+@Table(name = "subcategories")
 public class Subcategory extends BaseEntity {
 
     @Column(name = "name")
@@ -25,8 +25,8 @@ public class Subcategory extends BaseEntity {
     @OneToMany
     private List<Product> products;
 
-    public Subcategory(Category category,String name) {
-        this.category=category;
-        this.name=name;
+    public Subcategory(Category category, String name) {
+        this.category = category;
+        this.name = name;
     }
 }

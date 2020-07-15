@@ -13,7 +13,7 @@ import java.util.Set;
 @NoArgsConstructor
 
 @Entity
-@Table(name="orders")
+@Table(name = "orders")
 public class Order extends BaseEntity {
 
     @OneToOne
@@ -28,9 +28,8 @@ public class Order extends BaseEntity {
     )
     private Set<Product> products;
 
-    @Column (name = "time_order")
+    @Column(name = "time_order")
     private Date timeOrder;
-
 
 
 }

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class SubCategoryServiceImpl implements SubCategoryService{
+public class SubCategoryServiceImpl implements SubCategoryService {
 
     private final SubCategoryRepository subCategoryRepository;
 
@@ -31,7 +31,7 @@ public class SubCategoryServiceImpl implements SubCategoryService{
 
     @Override
     public List<Subcategory> getAllByCategoryID(Long id) {
-        return subCategoryRepository.findAllByCategory_Id(id);
+        return subCategoryRepository.findAllByCategoryId(id);
     }
 
     @Override

@@ -12,8 +12,13 @@ import java.util.List;
 
 @Controller
 public class SubCategoryController {
+
+    private final SubCategoryService subCategoryService;
+
     @Autowired
-    SubCategoryService subCategoryService;
+    public SubCategoryController(SubCategoryService subCategoryService) {
+        this.subCategoryService = subCategoryService;
+    }
 
     @GetMapping("/category/{id}")
     public String showPage(@PathVariable("id") Long categoryId, Model model) {

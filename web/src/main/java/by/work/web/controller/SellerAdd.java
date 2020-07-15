@@ -29,31 +29,31 @@ public class SellerAdd {
     }
 
     @ModelAttribute("product")
-    public Product getProduct(){
+    public Product getProduct() {
         Product product = new Product();
         return product;
     }
 
     @ModelAttribute("subCategories")
-    public List<Subcategory> getSubCategories(){
+    public List<Subcategory> getSubCategories() {
         Iterable<Subcategory> all = subCategoryService.getAll();
         List<Subcategory> subcategories = new ArrayList<>();
-        for(Subcategory item: all){
+        for (Subcategory item : all) {
             subcategories.add(item);
         }
         return subcategories;
     }
 
-    @GetMapping("/seller/add")
-    public String getPage(){
+    @GetMapping("/addProduct")
+    public String getPage() {
         return "addProduct";
     }
 
-    @PostMapping("/Product/add")
-    public String saveProduct(Product product, HttpSession httpSession, @RequestParam(value = "subCategoryID",required = false) Long id){
+    @PostMapping("/addProduct")
+    public String saveProduct(Product product, HttpSession httpSession, @RequestParam(value = "subCategoryID", required = false) Long id) {
         User user = (User) httpSession.getAttribute("currentUser");
         Subcategory subcategory = subCategoryService.getSubCategory(id);
-        productService.save(new Product(product.getBrand(),product.getName(),product.getPrice(),subcategory,user,product.getDescription()));
-        return "redirect:/seller/add";
+        productService.save(new Product(product.getBrand(), product.getName(), product.getPrice(), subcategory, user, product.getDescription()));
+        return "redirect:/addProduct";
     }
 }

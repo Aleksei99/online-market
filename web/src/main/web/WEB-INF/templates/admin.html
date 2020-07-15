@@ -21,14 +21,14 @@
 
     <label for="subcategory">Name of new subCategory</label>
     <input type="text" th:field="*{name}" id="subcategory">
-    <input type="text" th:name="id" th:value="${category.id}" hidden >
+    <input type="text" th:name="id" th:value="${category.id}" hidden>
     <input type="submit" value="add">
 
 </form>
 
-<form th:action="@{/admin/add}" method="post" th:object="${category}" >
+<form th:action="@{/admin/add}" method="post" th:object="${category}">
     <label for="category-form-name">Name of new category</label>
-    <input type="text"  th:field="*{name}" id="category-form-name"><br>
+    <input type="text" th:field="*{name}" id="category-form-name"><br>
     <input type="submit" onclick="successfullyAdded()" value="Add">
 </form>
 <!--    <a th:href="@{/logout}">Log out</a>-->

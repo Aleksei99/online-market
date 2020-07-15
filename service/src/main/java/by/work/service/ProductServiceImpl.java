@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 
@@ -26,6 +26,6 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public List<Product> findProducts(Long id) {
-        return productRepository.findProductsBySubcategory_Id(id);
+        return productRepository.findProductsBySubcategoryId(id);
     }
 }

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Setter
@@ -12,8 +13,8 @@ import java.util.Set;
 @NoArgsConstructor
 
 @Entity
-@Table(name="products")
-public class Product extends BaseEntity{
+@Table(name = "products")
+public class Product extends BaseEntity {
 
     @Column(name = "brand")
     private String brand;
@@ -21,8 +22,8 @@ public class Product extends BaseEntity{
     @Column(name = "name")
     private String name;
 
-    @Column (name = "price")
-    private double price;
+    @Column(name = "price")
+    private BigDecimal price;
 
     @ManyToOne
     @JoinColumn(name = "subcategory_id")
@@ -35,13 +36,13 @@ public class Product extends BaseEntity{
     @Column(name = "description")
     private String description;
 
-    public Product(String brand,String name,Double price,Subcategory subcategory,User seller,String description) {
-        this.brand=brand;
-        this.name=name;
-        this.price=price;
-        this.subcategory=subcategory;
-        this.seller=seller;
-        this.description=description;
+    public Product(String brand, String name, BigDecimal price, Subcategory subcategory, User seller, String description) {
+        this.brand = brand;
+        this.name = name;
+        this.price = price;
+        this.subcategory = subcategory;
+        this.seller = seller;
+        this.description = description;
     }
 
     @ManyToMany(mappedBy = "products")

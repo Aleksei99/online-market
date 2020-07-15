@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("/user/{id}")
     public String UserPage(@PathVariable("id") Long id, Model model) {

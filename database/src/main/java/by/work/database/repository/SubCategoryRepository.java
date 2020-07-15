@@ -5,7 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface SubCategoryRepository extends CrudRepository<Subcategory,Long> {
-    List<Subcategory> findAllByCategory_Id(Long id);
+public interface SubCategoryRepository extends CrudRepository<Subcategory, Long> {
+    List<Subcategory> findAllByCategoryId(Long id);
+
     Subcategory findById(Long id);
 }

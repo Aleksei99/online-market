@@ -5,7 +5,6 @@ import by.work.database.entity.User;
 import by.work.service.PersonalInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +13,13 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class PersonalInfoController {
+
+    private final PersonalInfoService personalInfoService;
+
     @Autowired
-    private PersonalInfoService personalInfoService;
+    public PersonalInfoController(PersonalInfoService personalInfoService) {
+        this.personalInfoService = personalInfoService;
+    }
 
     @ModelAttribute("info")
     public PersonalInfo modelInfo() {
@@ -32,7 +36,7 @@ public class PersonalInfoController {
     @PostMapping("/registrationPI")
     public String savePersonalInfo(PersonalInfo personalInfo, HttpSession httpSession) {
         User user = (User) httpSession.getAttribute("user");
-        personalInfoService.save(new PersonalInfo(user,personalInfo.getLogin(),personalInfo.getPassword()));
+        personalInfoService.save(new PersonalInfo(user, personalInfo.getLogin(), personalInfo.getPassword()));
         return "redirect:/home";
     }
 }

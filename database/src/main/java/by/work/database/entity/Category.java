@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 
 @Entity
-@Table(name="categories")
+@Table(name = "categories")
 public class Category extends BaseEntity {
 
     @Column(name = "name")
