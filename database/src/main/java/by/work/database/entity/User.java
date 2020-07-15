@@ -7,11 +7,10 @@ import javax.persistence.*;
 @Setter
 @Getter
 @NoArgsConstructor
-
+@ToString(callSuper = true)
 
 @Entity
 @Table(name="users", schema = "online_market")
-@ToString
 public class User extends BaseEntity {
 
     @Column(name = "name")
@@ -23,10 +22,11 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-
     public User(String name,String surname,Role role) {
         this.name=name;
         this.surname=surname;
         this.role=role;
     }
+
+
 }
