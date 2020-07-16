@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <!-- FIXME html doesnt see css because of url (/example/smt) why?-->
-    <link rel="stylesheet" type="text/css" th:href="@{css/product.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/product.css}"/>
 </head>
 <body>
 <div th:each="product : ${products}" class="product-item">
