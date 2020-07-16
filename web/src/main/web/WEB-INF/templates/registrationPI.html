@@ -6,13 +6,17 @@
     <link rel="stylesheet" type="text/css" th:href="@{css/forms.css}">
 </head>
 <body>
-<form th:action="@{/registrationPI}" method="post" th:object="${info}" class="ui-form">
+<form th:action="@{/registrationPI}" method="post" th:object="${info}" class="ui-form" autocomplete="on">
     <h3>Registration</h3>
     <div class="form-row">
-        <input type="text" th:field="*{login}" id="login" required autocomplete="off"><label for="login">Login</label>
+        <input type="text" th:field="*{login}" id="login" required><label for="login">Login</label>
     </div>
     <div class="form-row">
         <input type="password" th:field="*{password}" id="password" required autocomplete="off"><label for="password">Password</label>
+        <!-- FIXME didnt represented (Page loses information) -->
+        <div class="error-form">
+            <p th:each="err : ${#fields.errors('password')}" th:text="#{${err}}"></p>
+        </div>
     </div>
     <input type="submit" id="send" value="Register">
 </form>

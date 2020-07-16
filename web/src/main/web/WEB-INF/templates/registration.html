@@ -10,10 +10,16 @@
     <h3>Registration</h3>
     <div class="form-row">
         <input type="text" th:field="*{name}" id="name" required autocomplete="off"><label for="name">Name</label>
+        <div class="error-form">
+            <p th:each="err : ${#fields.errors('name')}" th:text="#{${err}}"></p>
+        </div>
     </div>
     <div class="form-row">
         <input type="text" th:field="*{surname}" id="surname" required autocomplete="off"><label
             for="surname">Surname</label>
+        <div class="error-form">
+            <p th:each="err : ${#fields.errors('surname')}" th:text="#{${err}}"></p>
+        </div>
     </div>
     <div class="form-row">
         <select id="role" th:field="*{role}">

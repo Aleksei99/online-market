@@ -17,7 +17,7 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"by.work"})
-@Import(value = {ThymeleafConfig.class, SecurityConfig.class})
+@Import(value = {ThymeleafConfig.class, SecurityConfig.class, InternationalizationConfig.class})
 public class WebConfig extends WebMvcConfigurerAdapter {
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {

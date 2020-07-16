@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Setter
 @Getter
@@ -17,9 +18,11 @@ import javax.persistence.*;
 public class User extends BaseEntity {
 
     @Column(name = "name")
+    @Size(min = 3, max = 16, message = "errors.user.name")
     private String name;
 
     @Column(name = "surname")
+    @Size(min = 3, max = 24, message = "errors.user.surname")
     private String surname;
 
     @Enumerated(EnumType.STRING)
