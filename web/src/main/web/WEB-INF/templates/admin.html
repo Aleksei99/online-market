@@ -26,7 +26,7 @@
 
 </form>
 
-<form th:action="@{/admin/add}" method="post" th:object="${category}">
+<form th:action="@{/admin/addCategory}" method="post" th:object="${category}">
     <label for="category-form-name">Name of new category</label>
     <input type="text" th:field="*{name}" id="category-form-name"><br>
     <input type="submit" onclick="successfullyAdded()" value="Add">

@@ -36,6 +36,8 @@ public class PersonalInfoController {
     @PostMapping("/registrationPI")
     public String savePersonalInfo(PersonalInfo personalInfo, HttpSession httpSession) {
         User user = (User) httpSession.getAttribute("user");
+        String login= personalInfo.getLogin();
+        String password = personalInfo.getPassword();
         personalInfoService.save(new PersonalInfo(user, personalInfo.getLogin(), personalInfo.getPassword()));
         return "redirect:/home";
     }

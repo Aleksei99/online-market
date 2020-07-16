@@ -56,7 +56,7 @@ public class AdminController {
         return "admin";
     }
 
-    @PostMapping("/admin/add")
+    @PostMapping("/admin/addCategory")
     public String addCategory(Category category) {
         categoryService.addCategory(category);
         return "redirect:/admin";
