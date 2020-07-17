@@ -1,10 +1,9 @@
 package by.work.web.controller;
 
 import by.work.database.entity.Category;
-import by.work.database.entity.PersonalInfo;
 import by.work.database.entity.User;
 import by.work.service.CategoryService;
-import by.work.service.PersonalInfoService;
+import by.work.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,12 +20,12 @@ public class HomeController {
 
     private final CategoryService categoryService;
 
-    private final PersonalInfoService personalInfoService;
+    private final UserService userService;
 
     @Autowired
-    public HomeController(CategoryService categoryService, PersonalInfoService personalInfoService) {
+    public HomeController(CategoryService categoryService, UserService userService) {
         this.categoryService = categoryService;
-        this.personalInfoService = personalInfoService;
+        this.userService = userService;
     }
 
     @GetMapping("/home")
@@ -39,8 +38,7 @@ public class HomeController {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext()
                 .getAuthentication().getPrincipal();
         String username = userDetails.getUsername();
-        PersonalInfo personalInfo = personalInfoService.findPersonalInfo(username);
-        User user = personalInfo.getUser();
+        User user = userService.findByLogin(username);
         session.setAttribute("currentUser", user);
         model.addAttribute("currentUser", user);
         model.addAttribute("categories", categories);

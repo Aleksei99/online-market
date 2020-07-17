@@ -46,8 +46,7 @@ public class RegistrationController {
             return "registration";
         }
         userService.save(user);
-        session.setAttribute("user", user);
-        return "redirect:/registrationPI";
+        return "redirect:/home";
     }
 
 }

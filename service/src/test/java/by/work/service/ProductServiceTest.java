@@ -48,7 +48,7 @@ public class ProductServiceTest {
 
     @Before
     public void setUp() throws Exception {
-        User user = new User("Eva", "Green", Role.SELLER);
+        User user = new User("Eva", "Green","Eva","1234", Role.SELLER);
         userRepository.save(user);
         List<Subcategory> subcategories = new ArrayList<>();
         Category category = new Category("Computer", subcategories);

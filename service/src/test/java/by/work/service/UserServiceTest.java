@@ -1,6 +1,5 @@
 package by.work.service;
 
-import by.work.database.entity.PersonalInfo;
 import by.work.database.entity.Role;
 import by.work.database.entity.User;
 import by.work.database.repository.UserRepository;
@@ -31,18 +30,15 @@ public class UserServiceTest {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private PersonalInfoService personalInfoService;
+
     @Autowired
     private UserRepository userRepository;
 
 
     @Before
     public void beforeClass() throws Exception {
-        User user = new User(NAME, SURNAME, Role.SELLER);
+        User user = new User(NAME, SURNAME,NAME,PASSWORD, Role.SELLER);
         userRepository.save(user);
-        PersonalInfo personalInfo = new PersonalInfo(user, NAME, PASSWORD);
-        personalInfoService.save(personalInfo);
     }
 
 
@@ -58,18 +54,11 @@ public class UserServiceTest {
 
     @Test
     public void saveTest() {
-        User user = new User("Eva", "Green", Role.ADMIN);
+        User user = new User("Eva", "Green","Eva","1234", Role.ADMIN);
         user.setId(2L);
         userService.save(user);
 
         Assert.assertNotNull(userService.findUserById(2L));
-    }
-
-    @Test
-    public void findPersonalInfoTest() {
-        PersonalInfo personalInfo = personalInfoService.findPersonalInfo(NAME);
-
-        Assert.assertNotNull(personalInfo);
     }
 
     @Test

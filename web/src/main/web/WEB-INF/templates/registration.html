@@ -22,6 +22,15 @@
         </div>
     </div>
     <div class="form-row">
+        <input type="text" th:field="*{login}" id="login" required><label for="login">Login</label>
+    </div>
+    <div class="form-row">
+        <input type="password" th:field="*{password}" id="password" required autocomplete="off"><label for="password">Password</label>
+        <div class="error-form">
+            <p th:each="err : ${#fields.errors('password')}" th:text="#{${err}}"></p>
+        </div>
+    </div>
+    <div class="form-row">
         <select id="role" th:field="*{role}">
             <option th:each="role : ${allRoles}"
                     th:text="${#strings.capitalize(#strings.toLowerCase(role))}"
@@ -29,7 +38,7 @@
             </option>
         </select>
     </div>
-    <input type="submit" id="send" value="Continue">
+    <input type="submit" id="send" value="Register">
 </form>
 </body>
 </html>
