@@ -16,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * FIXME NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
+ */
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ServiceConfig.class)
 @ComponentScan(basePackages = {"by.work", "by.work.service"})
@@ -44,7 +47,7 @@ public class CategoryServiceTest {
 
     @Test
     public void getCategoryByIdTest() {
-        Long id = categoryService.getAll().iterator().next().getId();
+        Long id = categoryService.getAllCategories().iterator().next().getId();
         Category category = categoryService.getCategory(id);
 
         Assert.assertEquals(NAME, category.getName());

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -22,11 +21,7 @@ public class StartPageController {
 
     @GetMapping("/")
     public String showPage(Model model) {
-        Iterable<Category> all = categoryService.getAll();
-        List<Category> categories = new ArrayList<>();
-        for (Category item : all) {
-            categories.add(item);
-        }
+        List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("categories", categories);
         return "startPage";
     }

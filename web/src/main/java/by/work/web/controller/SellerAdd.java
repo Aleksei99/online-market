@@ -5,6 +5,7 @@ import by.work.database.entity.Subcategory;
 import by.work.database.entity.User;
 import by.work.service.ProductService;
 import by.work.service.SubCategoryService;
+import by.work.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,11 +20,13 @@ public class SellerAdd {
 
     private final ProductService productService;
     private final SubCategoryService subCategoryService;
+    private final UserService userService;
 
     @Autowired
-    public SellerAdd(ProductService productService, SubCategoryService subCategoryService) {
+    public SellerAdd(ProductService productService, SubCategoryService subCategoryService, UserService userService) {
         this.productService = productService;
         this.subCategoryService = subCategoryService;
+        this.userService = userService;
     }
 
     @ModelAttribute("product")
@@ -36,11 +37,7 @@ public class SellerAdd {
 
     @ModelAttribute("subCategories")
     public List<Subcategory> getSubCategories() {
-        Iterable<Subcategory> all = subCategoryService.getAll();
-        List<Subcategory> subcategories = new ArrayList<>();
-        for (Subcategory item : all) {
-            subcategories.add(item);
-        }
+        List<Subcategory> subcategories = subCategoryService.getAllSubCategories();
         return subcategories;
     }
 
@@ -50,8 +47,8 @@ public class SellerAdd {
     }
 
     @PostMapping("/addProduct")
-    public String saveProduct(Product product, HttpSession httpSession, @RequestParam(value = "subCategoryID", required = false) Long id) {
-        User user = (User) httpSession.getAttribute("currentUser");
+    public String saveProduct(Product product, @RequestParam(value = "subCategoryID", required = false) Long id) {
+        User user = userService.getCurrentUser();
         Subcategory subcategory = subCategoryService.getSubCategory(id);
         productService.save(new Product(product.getBrand(), product.getName(), product.getPrice(), subcategory, user, product.getDescription()));
         return "redirect:/addProduct";

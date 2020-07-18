@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -41,18 +40,11 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String getAdminPage(Model model) {
-        Iterable<Category> all = categoryService.getAll();
-        Iterable<Subcategory> subcategoryIterable = subCategoryService.getAll();
-        List<Category> categories = new ArrayList<>();
-        List<Subcategory> subcategories = new ArrayList<>();
-        for (Category item : all) {
-            categories.add(item);
-        }
-        for (Subcategory item : subcategoryIterable) {
-            subcategories.add(item);
-        }
-        model.addAttribute("subcategories", subcategories);
+        List<Category> categories = categoryService.getAllCategories();
+        List<Subcategory> subcategories = subCategoryService.getAllSubCategories();
+
         model.addAttribute("categories", categories);
+        model.addAttribute("subcategories", subcategories);
         return "admin";
     }
 

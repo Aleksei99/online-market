@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Service
 @Transactional
@@ -29,7 +32,12 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Iterable<Category> getAll() {
-        return categoryRepository.findAll();
+    public List<Category> getAllCategories() {
+        Iterable<Category> all = categoryRepository.findAll();
+        List<Category> categories = new ArrayList<>();
+        for (Category item : all) {
+            categories.add(item);
+        }
+        return categories;
     }
 }

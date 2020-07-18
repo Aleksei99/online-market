@@ -7,7 +7,7 @@ import java.util.List;
 public interface SubCategoryService {
     void addSubCategory(Subcategory subcategory);
 
-    Iterable<Subcategory> getAll();
+    List<Subcategory> getAllSubCategories();
 
     List<Subcategory> getAllByCategoryID(Long id);
 

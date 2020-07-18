@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -41,7 +40,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String saveUser(@Valid User user, Errors errors, HttpSession session) {
+    public String saveUser(@Valid User user, Errors errors) {
         if (errors.hasErrors()) {
             return "registration";
         }
