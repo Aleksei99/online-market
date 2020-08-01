@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p th:if="${contact==null}">No personal info Yet</p>
+<div th:unless="${contact==null}">
+    <p th:text="${contact.homeAddress.city}"></p>
+    <p th:text="${contact.homeAddress.street}"></p>
+    <p th:text="${contact.homeAddress.house}"></p>
+    <p th:text="${contact.homeAddress.number}"></p>
+    <p th:text="${contact.email}"></p>
+    <p th:text="${contact.telephone}"></p>
+</div>
+<a th:href="@{/editDetails}">Edit Personal information</a>
+</body>
+</html>

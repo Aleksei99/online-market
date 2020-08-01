@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Set;
 
 @Setter
@@ -16,7 +17,7 @@ import java.util.Set;
 @Table(name = "orders")
 public class Order extends BaseEntity {
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -28,8 +29,11 @@ public class Order extends BaseEntity {
     )
     private Set<Product> products;
 
-    @Column(name = "time_order")
-    private Date timeOrder;
+    @Column(name = "total_amount",nullable = true)
+    private Double totalAmount;
+
+    @Column(name = "time_order",nullable = true)
+    private Timestamp timeOrder;
 
 
 }

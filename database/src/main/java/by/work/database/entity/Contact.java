@@ -36,4 +36,7 @@ public class Contact extends BaseEntity {
             @AttributeOverride(name = "number", column = @Column(name = "other_number"))
     })
     private Address otherAddress;
+
+    @Column(name = "email")
+    private String email;
 }

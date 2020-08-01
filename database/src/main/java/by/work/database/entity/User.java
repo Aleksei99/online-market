@@ -46,12 +46,15 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToOne
+    private Contact contact;
 
-    public User(String name, String surname,String login,String password, Role role) {
+
+    public User(String name, String surname, String login, String password, Role role) {
         this.name = name;
         this.surname = surname;
-        this.login=login;
-        this.password=password;
+        this.login = login;
+        this.password = password;
         this.role = role;
     }
 }

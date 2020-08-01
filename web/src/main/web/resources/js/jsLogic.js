@@ -11,3 +11,4 @@ function successfullyAdded() {
             $('#category-name').text(category.name);
     })
 }
+

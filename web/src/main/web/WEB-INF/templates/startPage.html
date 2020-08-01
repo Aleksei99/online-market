@@ -20,6 +20,9 @@
                th:href="@{/category/{id}(id=${category.id})}"></a>
         </div>
     </div>
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/info}">Personal info</a>
+    </div>
     <a href="#">About</a>
     <a href="#">FAQ</a>
     <div sec:authorize="hasAuthority('ADMIN')">

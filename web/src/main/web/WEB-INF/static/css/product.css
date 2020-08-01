@@ -41,7 +41,10 @@
     margin-bottom: 12px;
 }
 
-.button {
+.myButton input[type="checkbox"]{
+    visibility: hidden;
+}
+.myButton label span {
     text-decoration: none;
     display: inline-block;
     padding: 0 12px;
@@ -51,8 +54,14 @@
     font-size: 12px;
     line-height: 28px;
     transition: .3s ease-in;
+    cursor:pointer;
 }
-
-.product-item:hover .button {
-    background: #fc5a5a;
+.myButton label span:after {
+    content:"Add to cart";
+}
+.myButton input[type="checkbox"]:checked ~ label span:after {
+    content:"Remove";
+}
+.myButton input[type="checkbox"]:checked ~ label span {
+    color:red;
 }
