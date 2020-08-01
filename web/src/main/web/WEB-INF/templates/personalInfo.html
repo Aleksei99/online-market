@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/navBar.css}">
 </head>
 <body>
+<div th:insert="startPage :: bar"></div>
 <p th:if="${contact==null}">No personal info Yet</p>
 <div th:unless="${contact==null}">
     <p th:text="${contact.homeAddress.city}"></p>

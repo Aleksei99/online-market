@@ -9,5 +9,7 @@ public interface ProductService {
 
     List<Product> findProducts(Long id);
 
+    List<Product> findAll();
+
     Product findProduct(Long id);
 }

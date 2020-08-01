@@ -6,19 +6,21 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/product.css}"/>
 </head>
 <body>
-<form th:action="@{/cart}" method="post" th:object="${ListProducts}">
-    <div th:each="product : ${modelProducts}" class="product-item">
-        <div class="product-list">
-            <h3 th:text="${product.name}"></h3>
-            <span class="price" th:text="${product.price}"></span><span class="price" text="$"></span>
-            <div class="myButton">
-                <input type="checkbox" th:name="button" th:field="*{productsID}" th:value="${product.id}"
-                       th:id="${product.id}"/>
-                <label th:for="${product.id}"><span></span></label>
+<div th:fragment="products">
+    <form th:action="@{/cart}" method="post" th:object="${ListProducts}">
+        <div th:each="product : ${modelProducts}" class="product-item">
+            <div class="product-list">
+                <h3 th:text="${product.name}"></h3>
+                <span class="price" th:text="${product.price}"></span><span class="price">$</span>
+                <div class="myButton">
+                    <input type="checkbox" th:name="button" th:field="*{productsID}" th:value="${product.id}"
+                           th:id="${product.id}"/>
+                    <label th:for="${product.id}"><span></span></label>
+                </div>
             </div>
         </div>
-    </div>
-    <input type="submit" value="To Cart">
-</form>
+        <input type="submit" value="To Cart">
+    </form>
+</div>
 </body>
 </html>

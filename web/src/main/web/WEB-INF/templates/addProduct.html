@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{css/forms.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/navBar.css}">
 </head>
 <body>
+<div th:insert="startPage :: bar"></div>
 <form th:action="@{/addProduct}" th:object="${product}" method="post" class="ui-form">
     <h3>New Product</h3>
     <div class="form-row">

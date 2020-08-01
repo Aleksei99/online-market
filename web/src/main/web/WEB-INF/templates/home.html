@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{css/navBar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/product.css}"/>
 </head>
 <body>
 <div th:insert="startPage :: bar"></div>
@@ -11,6 +12,6 @@
     <span th:text="${currentUser.name}"> </span>
     <span th:text="${currentUser.surname}">!</span>
 </p>
-<p></p>
+<div th:insert="products :: products"></div>
 </body>
 </html>

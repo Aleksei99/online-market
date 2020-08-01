@@ -1,8 +1,9 @@
 package by.work.web.controller;
 
 import by.work.database.entity.Address;
+import by.work.database.entity.Category;
 import by.work.database.entity.Contact;
-import by.work.database.entity.User;
+import by.work.service.CategoryService;
 import by.work.service.ContactService;
 import by.work.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class ContactController {
 
+    private final CategoryService categoryService;
     private final ContactService contactService;
     private final UserService userService;
 
     @Autowired
-    public ContactController(ContactService contactService, UserService userService) {
+    public ContactController(CategoryService categoryService, ContactService contactService, UserService userService) {
+        this.categoryService = categoryService;
         this.contactService = contactService;
         this.userService = userService;
     }
@@ -31,7 +36,9 @@ public class ContactController {
     }
 
     @GetMapping("/editDetails")
-    public String getEditPage() {
+    public String getEditPage(Model model) {
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories", categories);
         return "editPersonalInfo";
     }
 
@@ -39,6 +46,8 @@ public class ContactController {
     public String getInfoPage(Model model){
         Contact userContact = contactService.findUserContact();
         model.addAttribute("contact",userContact);
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories", categories);
         return "personalInfo";
     }
 
