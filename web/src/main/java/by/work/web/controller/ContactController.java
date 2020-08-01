@@ -46,7 +46,7 @@ public class ContactController {
     public String saveDetails(Address address, @RequestParam(value = "telephone", required = false) String telephone,
                               @RequestParam(value = "email", required = false) String email){
         contactService.saveHomeAddress(address, telephone, email);
-        return "personalInfo";
+        return "redirect:/info";
     }
 
 }

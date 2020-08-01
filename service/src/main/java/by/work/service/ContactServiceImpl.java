@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ContactServiceImpl implements ContactService{
+public class ContactServiceImpl implements ContactService {
 
     private final ContactRepository contactRepository;
     private final UserService userService;
@@ -20,9 +20,9 @@ public class ContactServiceImpl implements ContactService{
     }
 
     @Override
-    public void saveHomeAddress(Address homeAddress,String telephone,String email) {
+    public void saveHomeAddress(Address homeAddress, String telephone, String email) {
         User user = userService.getCurrentUser();
-        Contact contact = new Contact();
+        Contact contact = getOrCreateContact();
         contact.setUser(user);
         contact.setTelephone(telephone);
         contact.setEmail(email);
@@ -36,5 +36,8 @@ public class ContactServiceImpl implements ContactService{
         return contactRepository.findByUser(user);
     }
 
+    public Contact getOrCreateContact() {
+        return findUserContact() == null ? new Contact() : findUserContact();
+    }
 
 }
