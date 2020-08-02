@@ -14,10 +14,16 @@
         <p th:text="${product.brand}"></p>
         <p th:text="${product.description}"></p>
         <p th:text="${product.price}"></p><br>
-        <input type="number" name="count" th:value="1">
-        <input type="hidden" th:value="${product.price}" name="price" >
+        <input type="number" name="count" onkeypress="return event.charCode >= 48" min="1" th:value="1">
+        <input type="hidden" th:value="${product.price}" name="price">
     </div>
     <input type="submit" value="Ordering">
 </form>
+    <div>
+        <form th:each="product: ${cartProducts}" th:action="@{/product/remove}" method="post">
+            <input type="text" th:value="${product.id}" th:name="id" th:id="${product.id}" hidden>
+            <button type="submit" th:text="${'Remove ' + product.name}"></button>
+        </form>
+    </div>
 </body>
 </html>

@@ -17,7 +17,7 @@
         <input type="text" th:field="*{name}" required autocomplete="off" id="name"><label for="name">Name </label>
     </div>
     <div class="form-row">
-        <input type="number" th:field="*{price}" required autocomplete="off" id="price"><label
+        <input type="number" name="price" onkeypress="return event.charCode >= 48" min="1" step="0.01" th:value="1" required autocomplete="off" id="price"><label
             for="price">Price </label>
     </div>
     <div class="form-row">
