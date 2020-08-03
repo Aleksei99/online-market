@@ -36,8 +36,22 @@ public class ContactServiceImpl implements ContactService {
         return contactRepository.findByUser(user);
     }
 
-    public Contact getOrCreateContact() {
+    private Contact getOrCreateContact() {
         return findUserContact() == null ? new Contact() : findUserContact();
+    }
+
+    @Override
+    public Contact getEmptyContact() {
+        Contact empty = new Contact();
+        Address address = new Address();
+        address.setCity("");
+        address.setHouse("");
+        address.setNumber("");
+        address.setStreet("");
+        empty.setTelephone("");
+        empty.setEmail("");
+        empty.setHomeAddress(address);
+        return empty;
     }
 
 }

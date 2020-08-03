@@ -35,17 +35,27 @@ public class ContactController {
         return new Address();
     }
 
+    @ModelAttribute("contact")
+    public Contact modelContact() {
+        Contact contact = contactService.findUserContact();
+        if(contact==null){
+            return contactService.getEmptyContact();
+        }else
+        return contact;
+    }
+
     @GetMapping("/editDetails")
     public String getEditPage(Model model) {
+        //this is need to display a dropdown content of navBar
         List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("categories", categories);
         return "editPersonalInfo";
     }
 
     @GetMapping("/info")
-    public String getInfoPage(Model model){
+    public String getInfoPage(Model model) {
         Contact userContact = contactService.findUserContact();
-        model.addAttribute("contact",userContact);
+        model.addAttribute("contact", userContact);
         List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("categories", categories);
         return "personalInfo";
@@ -53,7 +63,7 @@ public class ContactController {
 
     @PostMapping("/saveDetails")
     public String saveDetails(Address address, @RequestParam(value = "telephone", required = false) String telephone,
-                              @RequestParam(value = "email", required = false) String email){
+                              @RequestParam(value = "email", required = false) String email) {
         contactService.saveHomeAddress(address, telephone, email);
         return "redirect:/info";
     }
