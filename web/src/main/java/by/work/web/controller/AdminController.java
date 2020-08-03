@@ -54,11 +54,22 @@ public class AdminController {
         return "redirect:/admin";
     }
 
+    @PostMapping("/admin/deleteCategory")
+    public String deleteCategory(@RequestParam(value = "id", required = false) Long id) {
+        categoryService.deleteCategory(id);
+        return "redirect:/admin";
+    }
+
     @PostMapping("/admin/addSubCategory")
     public String addSubCategory(Subcategory subcategory, @RequestParam(value = "id", required = false) Long id) {
         subCategoryService.addSubCategory(new Subcategory(categoryService.getCategory(id), subcategory.getName()));
         return "redirect:/admin";
     }
 
+    @PostMapping("/admin/deleteSubCategory")
+    public String deleteSubCategory(@RequestParam(value = "id", required = false) Long id) {
+        subCategoryService.deleteSubCategory(id);
+        return "redirect:/admin";
+    }
 
 }

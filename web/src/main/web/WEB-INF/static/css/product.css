@@ -2,6 +2,10 @@
 * {
     box-sizing: border-box;
 }
+body {
+    background: #e6f4fd;
+    font-family: 'Roboto', sans-serif;
+}
 
 .product-item {
     width: 300px;

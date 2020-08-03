@@ -5,38 +5,53 @@
     <title>Title</title>
     <script src="/resources/js/jquery-3.2.1.min.js"></script>
     <script src="/resources/js/jsLogic.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{css/forms.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/navBar.css}">
 </head>
 <body>
-<p>Admin Page</p>
-
+<div th:insert="startPage :: bar"></div>
 <form th:each="category :${categories}"
       th:action="@{/admin/addSubCategory}" method="post"
       th:object="${subcategory}">
-
-    <ul><p th:text="${category.name}"></p>
-        <li th:each="subcat :${subcategories}" th:if="${subcat.category.id==category.id}">
-            <span th:text="${subcat.name}"></span>
-        </li>
-    </ul>
-
-    <label for="subcategory">Name of new subCategory</label>
-    <input type="text" th:field="*{name}" id="subcategory">
-    <input type="text" th:name="id" th:value="${category.id}" hidden>
-    <input type="submit" value="add">
-
+    <div class="section">
+        <ul><p th:text="${category.name}" class="paragraph"></p>
+            <li th:each="subcat :${subcategories}" th:if="${subcat.category.id==category.id}">
+                <span th:text="${subcat.name}"></span>
+            </li>
+        </ul>
+        <label for="subcategory">Name of new subCategory</label>
+        <input type="text" th:field="*{name}" id="subcategory">
+        <input type="text" th:name="id" th:value="${category.id}" hidden>
+        <input type="submit" value="add">
+    </div>
+</form>
+<form class="delete-section" th:action="@{/admin/deleteSubCategory}" method="post">
+    <p class="paragraph">Delete subcategory</p>
+    <select th:name="id">
+        <option th:each="subcat : ${subcategories}"
+                th:text="${subcat.name}"
+                th:value="${subcat.id}">
+        </option>
+    </select>
+    <input type="submit" value="delete">
+</form>
+<form class="delete-section2" th:action="@{/admin/deleteCategory}" method="post">
+    <p class="paragraph">Delete category</p>
+    <select th:name="id">
+        <option th:each="cat : ${categories}"
+                th:text="${cat.name}"
+                th:value="${cat.id}">
+        </option>
+    </select>
+    <input type="submit" value="delete">
 </form>
 
-<form th:action="@{/admin/addCategory}" method="post" th:object="${category}">
+
+<form class="add-section" th:action="@{/admin/addCategory}" method="post" th:object="${category}">
+    <p class="paragraph">Add category</p>
     <label for="category-form-name">Name of new category</label>
-    <input type="text" th:field="*{name}" id="category-form-name"><br>
+    <input type="text" th:field="*{name}" id="category-form-name">
     <input type="submit" onclick="successfullyAdded()" value="Add">
 </form>
-<!--    <a th:href="@{/logout}">Log out</a>-->
-<a href="javascript: document.logoutForm.submit()" role="menuitem"> Logout</a>
-
-<form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
-    <input hidden type="submit" value="Sign Out"/>
-</form>
-<p id="category-name"></p>
 </body>
 </html>

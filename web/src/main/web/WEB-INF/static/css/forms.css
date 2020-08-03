@@ -137,3 +137,49 @@ body {
     padding-top: 10px;
     color: red;
 }
+.section{
+    top: 100px;
+    background-color: #fff;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 10px;
+    width: 350px;
+}
+.add-section{
+    position: absolute;
+    top: 63px;
+    height:150px;
+    left: 470px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 15px;
+    width: 350px;
+}
+.delete-section{
+    position: absolute;
+    top: 400px;
+    left: 470px;
+    height:150px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 15px;
+    width: 350px;
+}
+.paragraph {
+    font-size: 20px;
+    color: black;
+    padding-top: 5px;
+    font-weight: bold;
+    text-align: center;
+}
+.delete-section2{
+    position: absolute;
+    top: 230px;
+    left: 470px;
+    height:150px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 15px;
+    width: 350px;
+}
+
