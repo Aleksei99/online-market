@@ -1,0 +1,37 @@
+.heading h1{
+    top: 50px;
+    text-align: center;
+}
+.item p{
+    position: relative;
+    font-family: cursive;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 15px;
+    width: 400px;
+    left:50px;
+}
+.item p span{
+    position: absolute;
+    font-weight: bold;
+    left: 200px;
+}
+body{
+    background: #e6f4fd;
+}
+.btn a {
+    position:relative;
+    left:130px;
+    background-color:white;
+    float: left;
+    border-radius:5px;
+    display: block;
+    color: #131313;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+.btn a:hover{
+    background-color: #1abc9c;
+    color: #131313;
+}
