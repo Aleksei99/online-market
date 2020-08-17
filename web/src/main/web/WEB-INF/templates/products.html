@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/product.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navBar.css}">
 </head>
 <body>
+<div th:insert="startPage :: bar"></div>
+<p> </p>
 <div th:fragment="products">
     <form th:action="@{/cart}" method="post" th:object="${ListProducts}">
         <div th:each="product : ${modelProducts}" class="product-item">
@@ -19,7 +22,9 @@
                 </div>
             </div>
         </div>
-        <input type="submit" value="To Cart">
+        <div class="buttonCart">
+            <input type="submit" value="To Cart">
+        </div>
     </form>
 </div>
 </body>

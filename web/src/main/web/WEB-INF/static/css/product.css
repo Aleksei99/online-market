@@ -69,3 +69,19 @@ body {
 .myButton input[type="checkbox"]:checked ~ label span {
     color:red;
 }
+.buttonCart input[type="submit"]{
+    position: absolute;
+    top: 1px;
+    right: 90px;
+    background:white;
+    border-width: 0;
+    display: block;
+    color: #131313;
+    font-size: 15px;
+    padding: 14px 20px;
+}
+.buttonCart input:hover{
+    background-color: #1abc9c;
+    color: #131313;
+    cursor: pointer;
+}
