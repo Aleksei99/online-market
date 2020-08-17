@@ -11,5 +11,5 @@ public interface OrderService {
 
     Order save(ProductDTO products);
     BigDecimal getTotalAmount(Set<Product> products);
-    void update(Order order,Double totalAmount);
+    void update(Order order, BigDecimal totalAmount);
 }

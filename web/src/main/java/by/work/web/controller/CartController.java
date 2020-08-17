@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.Set;
 
 @Controller
@@ -32,11 +33,11 @@ public class CartController {
 
     @PostMapping("/ordering")
     public String post(OrderDTO dto, HttpSession session) {
-        double totalAmount = 0;
+        BigDecimal totalAmount = BigDecimal.ZERO;
         for (int i = 0; i < dto.getCount().size(); i++) {
             for (int j = 0; j < dto.getPrice().size(); j++) {
                 if (i == j) {
-                    totalAmount += dto.getCount().get(i) * dto.getPrice().get(j);
+                    totalAmount = totalAmount.add(new BigDecimal(dto.getCount().get(i)).multiply(dto.getPrice().get(j)));
                 }
             }
         }

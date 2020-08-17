@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Set;
@@ -30,7 +31,7 @@ public class Order extends BaseEntity {
     private Set<Product> products;
 
     @Column(name = "total_amount",nullable = true)
-    private Double totalAmount;
+    private BigDecimal totalAmount;
 
     @Column(name = "time_order",nullable = true)
     private Timestamp timeOrder;

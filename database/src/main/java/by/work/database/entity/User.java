@@ -27,6 +27,7 @@ public class User extends BaseEntity {
     private String surname;
 
     @Column(name = "login", unique = true)
+    @Pattern(regexp = "^[a-zA-Z][a-zA-Z0-9-_.]{1,20}$", message = "errors.user.login")
     private String login;
 
     /**

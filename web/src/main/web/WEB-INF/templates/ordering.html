@@ -6,5 +6,17 @@
 </head>
 <body>
 <p>Total amount of your order is:</p><span th:text="${order.totalAmount}"></span>
+<div th:if="${contact==null}">
+    <p>Please add a Contact data</p>
+    <a th:href="@{/editDetails}">Edit Personal information</a>
+</div>
+<div th:unless="${contact==null}">
+    <p th:text="${contact.homeAddress.city}"></p>
+    <p th:text="${contact.homeAddress.street}"></p>
+    <p th:text="${contact.homeAddress.house}"></p>
+    <p th:text="${contact.homeAddress.number}"></p>
+    <p th:text="${contact.email}"></p>
+    <p th:text="${contact.telephone}"></p>
+</div>
 </body>
 </html>

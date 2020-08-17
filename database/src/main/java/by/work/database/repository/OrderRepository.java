@@ -1,9 +1,13 @@
 package by.work.database.repository;
 
 import by.work.database.entity.Order;
+import by.work.database.entity.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Transactional
-public interface OrderRepository extends CrudRepository<Order,Long> {
+public interface OrderRepository extends CrudRepository<Order, Long> {
+
 }

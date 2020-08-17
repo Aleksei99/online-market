@@ -7,25 +7,28 @@
 </head>
 <body>
 <form th:action="@{/registration}" method="post" th:object="${user}" class="ui-form">
-    <h3>Registration</h3>
+    <h3 th:text="#{Registration}"></h3>
     <div class="form-row">
-        <input type="text" th:field="*{name}" id="name" required autocomplete="off"><label for="name">Name</label>
+        <input type="text" th:field="*{name}" id="name" required autocomplete="off"><label for="name" th:text="#{Name}"></label>
         <div class="error-form">
             <p th:each="err : ${#fields.errors('name')}" th:text="#{${err}}"></p>
         </div>
     </div>
     <div class="form-row">
         <input type="text" th:field="*{surname}" id="surname" required autocomplete="off"><label
-            for="surname">Surname</label>
+            for="surname" th:text="#{Surname}"></label>
         <div class="error-form">
             <p th:each="err : ${#fields.errors('surname')}" th:text="#{${err}}"></p>
         </div>
     </div>
     <div class="form-row">
-        <input type="text" th:field="*{login}" id="login" required><label for="login">Login</label>
+        <input type="text" th:field="*{login}" id="login" required><label for="login" th:text="#{Login}"></label>
+        <div class="error-form">
+            <p th:each="err : ${#fields.errors('login')}" th:text="#{${err}}"></p>
+        </div>
     </div>
     <div class="form-row">
-        <input type="password" th:field="*{password}" id="password" required autocomplete="off"><label for="password">Password</label>
+        <input type="password" th:field="*{password}" id="password" required autocomplete="off"><label for="password" th:text="#{Password}"></label>
         <div class="error-form">
             <p th:each="err : ${#fields.errors('password')}" th:text="#{${err}}"></p>
         </div>
@@ -38,7 +41,7 @@
             </option>
         </select>
     </div>
-    <input type="submit" id="send" value="Register">
+    <input type="submit" id="send" th:value="#{Register}">
 </form>
 </body>
 </html>
