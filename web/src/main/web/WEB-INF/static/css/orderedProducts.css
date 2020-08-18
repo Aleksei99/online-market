@@ -1,0 +1,16 @@
+.product-item {
+    position:relative;
+    width: 200px;
+    left:50px;
+    padding:14px 20px;
+    margin-top:15px;
+    border-bottom: 2px solid #F5F5F5;
+    background: white;
+    font-family: "Open Sans";
+}
+.price {
+    font-size: 16px;
+    color: #fc5a5a;
+    display: inline-block;
+    margin-bottom: 12px;
+}

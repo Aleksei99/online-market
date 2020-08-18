@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/subCategorys.css}">
 </head>
 <body>
+<div th:insert="startPage :: bar"></div>
 <h1>Categories of Products</h1>
 <td>
     <p th:if="${subCategories.isEmpty()}">There are no subCategories</p>
-    <div th:each="subCategory: ${subCategories}" th:unless="${subCategories.isEmpty()}">
+    <div class="subCat" th:each="subCategory: ${subCategories}" th:unless="${subCategories.isEmpty()}">
         <a th:text="${subCategory.name}" th:href="@{/products/{id}(id=${subCategory.id})}"></a>
     </div>
 </td>

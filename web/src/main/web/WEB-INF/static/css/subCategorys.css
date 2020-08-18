@@ -1,0 +1,27 @@
+h1{
+    top: 50px;
+    text-align: center;
+}
+
+body{
+    background: #e6f4fd;
+}
+.subCat a {
+    position:relative;
+    left: 17%;
+    background-color:white;
+    float: left;
+    border-radius:5px;
+    display: block;
+    color: #131313;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    width: 350px;
+    margin-right: 17%;
+    margin-top: 15px;
+}
+.subCat a:hover{
+    background-color: #1abc9c;
+    color: #131313;
+}

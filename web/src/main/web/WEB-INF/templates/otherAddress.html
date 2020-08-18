@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/forms.css}"/>
+</head>
+<body>
+<form th:action="@{/address/change}" method="post" th:object="${address}" class="ui-form">
+    <h3>Edit Information</h3>
+    <div class="form-row">
+        <input type="text" th:field="*{city}" required autocomplete="off" id="city"><label for="city">City </label>
+    </div>
+    <div class="form-row">
+        <input type="text" th:field="*{street}" required autocomplete="off" id="street"><label
+            for="street">Street </label>
+    </div>
+    <div class="form-row">
+        <input type="text" th:field="*{house}" required autocomplete="off" id="house"><label for="house">House </label>
+    </div>
+    <div class="form-row">
+        <input type="text" th:field="*{number}" required autocomplete="off" id="number"><label for="number">Apartment
+        number </label>
+    </div>
+    <input type="submit" value="Save">
+</form>
+</body>
+</html>

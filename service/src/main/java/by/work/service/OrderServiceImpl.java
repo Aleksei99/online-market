@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -24,6 +25,16 @@ public class OrderServiceImpl implements OrderService {
         this.orderRepository = orderRepository;
         this.userService = userService;
         this.productService = productService;
+    }
+
+    @Override
+    public List<Order> findOrders() {
+        return orderRepository.findAllWithTimeOrderAfter(new java.sql.Timestamp(new java.util.Date().getTime()-86400000));
+    }
+
+    @Override
+    public Order findById(Long id) {
+        return orderRepository.findById(id);
     }
 
     @Override

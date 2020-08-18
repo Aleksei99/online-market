@@ -1,29 +1,32 @@
 package by.work.web.controller;
 
-import by.work.database.entity.Category;
-import by.work.database.entity.Subcategory;
+import by.work.database.entity.*;
 import by.work.service.CategoryService;
+import by.work.service.ContactService;
+import by.work.service.OrderService;
 import by.work.service.SubCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class AdminController {
 
     private final CategoryService categoryService;
     private final SubCategoryService subCategoryService;
+    private final OrderService orderService;
+    private final ContactService contactService;
 
     @Autowired
-    public AdminController(CategoryService categoryService, SubCategoryService subCategoryService) {
+    public AdminController(CategoryService categoryService, SubCategoryService subCategoryService, OrderService orderService, ContactService contactService) {
         this.categoryService = categoryService;
         this.subCategoryService = subCategoryService;
+        this.orderService = orderService;
+        this.contactService = contactService;
     }
 
     @ModelAttribute("category")
@@ -70,6 +73,25 @@ public class AdminController {
     public String deleteSubCategory(@RequestParam(value = "id", required = false) Long id) {
         subCategoryService.deleteSubCategory(id);
         return "redirect:/admin";
+    }
+
+    @GetMapping("/admin/orders")
+    public String orders(Model model){
+        List<Order> orders = orderService.findOrders();
+        model.addAttribute("orders",orders);
+        return "orders";
+    }
+
+    @GetMapping("/order/{id}")
+    public String showDetails(@PathVariable("id") Long orderId, Model model) {
+        Order order =  orderService.findById(orderId);
+        User user = order.getUser();
+        Set<Product> products = order.getProducts();
+        Contact contact = contactService.findByUser(user);
+        model.addAttribute("products",products);
+        model.addAttribute("contact",contact);
+        model.addAttribute("order",order);
+        return "detailOrder";
     }
 
 }

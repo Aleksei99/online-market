@@ -31,6 +31,30 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
+    public void saveAnotherAddress(Address anotherAddress) {
+        User user = userService.getCurrentUser();
+        Contact contact = getOrCreateContact();
+        contact.setUser(user);
+        contact.setOtherAddress(anotherAddress);
+        contact.setAnotherAddress(true);
+        contactRepository.save(contact);
+    }
+
+    @Override
+    public void changeAddress() {
+        User user = userService.getCurrentUser();
+        Contact contact = getOrCreateContact();
+        contact.setUser(user);
+        contact.setAnotherAddress(false);
+        contactRepository.save(contact);
+    }
+
+    @Override
+    public Contact findByUser(User user) {
+        return contactRepository.findByUser(user);
+    }
+
+    @Override
     public Contact findUserContact() {
         User user = userService.getCurrentUser();
         return contactRepository.findByUser(user);

@@ -39,4 +39,7 @@ public class Contact extends BaseEntity {
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "another_address")
+    private Boolean anotherAddress;
 }

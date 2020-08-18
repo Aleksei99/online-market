@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/information.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/orderedProducts.css}">
+</head>
+<body>
+<div class="item" th:if="${contact.anotherAddress==false}">
+    <div class="heading">
+        <h1>Contact Information</h1>
+    </div>
+    <p>Name:<span th:text="${order.user.name}"></span></p>
+    <p>Surname:<span th:text="${order.user.surname}"></span></p>
+    <p>City:<span th:text="${contact.homeAddress.city}"></span></p>
+    <p>Street:<span th:text="${contact.homeAddress.street}"></span></p>
+    <p>Number of house:<span th:text="${contact.homeAddress.house}"></span></p>
+    <p>Number of flat:<span th:text="${contact.homeAddress.number}"></span></p>
+    <p>Email:<span th:text="${contact.email}"></span></p>
+    <p>Telephone:<span th:text="${contact.telephone}"></span></p>
+</div>
+<div class="item" th:if="${contact.anotherAddress==true}">
+    <div class="heading">
+        <h1>Contact Information</h1>
+    </div>
+    <p>Name:<span th:text="${order.user.name}"></span></p>
+    <p>Surname:<span th:text="${order.user.surname}"></span></p>
+    <p>City:<span th:text="${contact.otherAddress.city}"></span></p>
+    <p>Street:<span th:text="${contact.otherAddress.street}"></span></p>
+    <p>Number of house:<span th:text="${contact.otherAddress.house}"></span></p>
+    <p>Number of flat:<span th:text="${contact.otherAddress.number}"></span></p>
+    <p>Email:<span th:text="${contact.email}"></span></p>
+    <p>Telephone:<span th:text="${contact.telephone}"></span></p>
+</div>
+<h2>Products:</h2>
+<div class="product-item" th:each="product : ${products}">
+    <p>Id of product: <span th:text="${product.id}"></span ></p>
+    <p class="price">Price: <span th:text="${product.price}"></span ></p>
+    <p>Id of seller: <span th:text="${product.seller.id}"></span ></p>
+</div>
+<p>Total amount of order is: <span th:text="${order.totalAmount}"></span></p>
+</body>
+</html>

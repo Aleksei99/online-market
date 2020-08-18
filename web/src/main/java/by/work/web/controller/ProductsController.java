@@ -1,12 +1,13 @@
 package by.work.web.controller;
 
+import by.work.database.entity.Category;
 import by.work.database.entity.Order;
 import by.work.database.entity.Product;
+import by.work.service.CategoryService;
 import by.work.service.OrderService;
 import by.work.service.ProductService;
 import by.work.service.UserService;
 import by.work.service.dto.ProductDTO;
-import com.sun.org.apache.xpath.internal.operations.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,20 +17,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 public class ProductsController {
 
+    private final CategoryService categoryService;
     private final ProductService productService;
     private final OrderService orderService;
     private final UserService userService;
 
     @Autowired
-    public ProductsController(ProductService productService, OrderService orderService, UserService userService) {
+    public ProductsController(CategoryService categoryService, ProductService productService, OrderService orderService, UserService userService) {
+        this.categoryService = categoryService;
         this.productService = productService;
         this.orderService = orderService;
         this.userService = userService;
@@ -57,7 +57,9 @@ public class ProductsController {
     @GetMapping("/products/{id}")
     public String getPage(@PathVariable("id") Long id, Model model) {
         List<Product> products = productService.findProducts(id);
+        List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("modelProducts", products);
+        model.addAttribute("categories", categories);
         return "products";
     }
 }

@@ -35,4 +35,9 @@ public class OrderingController {
     public String getPage() {
         return "ordering";
     }
+
+    @GetMapping("/ordering/confirmed")
+    public String getSuccessPage() {
+        return "readyOrder";
+    }
 }
