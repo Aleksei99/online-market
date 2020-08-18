@@ -25,7 +25,7 @@
         number </label>
     </div>
     <div class="form-row">
-        <input type="text" th:name="telephone" th:value="${contact.telephone}" required autocomplete="off" id="telephone"><label for="telephone">Telephone </label>
+        <input type="tel" pattern="\+375-[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}" th:name="telephone" th:value="${contact.telephone}" required autocomplete="off" id="telephone"><label for="telephone">Telephone: +375-xx-xxx-xx-xx </label>
     </div>
     <div class="form-row">
         <input type="text" th:name="email" th:value="${contact.email}" required autocomplete="off" id="email"><label for="email">Email </label>
