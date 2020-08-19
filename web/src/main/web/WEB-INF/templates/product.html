@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/information.css}">
+</head>
+<body>
+<div th:insert="startPage :: bar"></div>
+<div class="item" >
+    <div class="heading">
+        <h1>Product Information</h1>
+    </div>
+    <p>Name:<span th:text="${product.name}"></span></p>
+    <p>Brand:<span th:text="${product.brand}"></span></p>
+    <p>Description:<span th:text="${product.description}"></span></p>
+    <p>Price:<span th:text="${product.price}"></span></p>
+</div>

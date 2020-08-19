@@ -62,4 +62,13 @@ public class ProductsController {
         model.addAttribute("categories", categories);
         return "products";
     }
+
+    @GetMapping("/product/{id}")
+    public String getProductPage(@PathVariable("id") Long id, Model model) {
+        Product product = productService.findProduct(id);
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("product", product);
+        model.addAttribute("categories", categories);
+        return "product";
+    }
 }

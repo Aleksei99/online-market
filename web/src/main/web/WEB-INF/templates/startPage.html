@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html th:lang="${lang}" th:with="lang=${#locale.language}" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <title>Page Title</title>
@@ -25,6 +25,12 @@
     </div>
     <a href="#">About</a>
     <a href="#">FAQ</a>
+    <div th:if="${#locale.language=='en'}">
+        <a href="?language=ru_RU">Русский</a>
+    </div>
+    <div th:if="${#locale.language=='ru'}">
+        <a href="?language=en_EN">English</a>
+    </div>
     <div sec:authorize="hasAuthority('ADMIN')">
         <a th:href="@{/admin}">Edit Categories</a>
         <a th:href="@{/admin/orders}">Orders</a>

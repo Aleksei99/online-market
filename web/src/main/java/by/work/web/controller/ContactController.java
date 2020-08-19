@@ -3,16 +3,14 @@ package by.work.web.controller;
 import by.work.database.entity.Address;
 import by.work.database.entity.Category;
 import by.work.database.entity.Contact;
+import by.work.database.entity.User;
 import by.work.service.CategoryService;
 import by.work.service.ContactService;
 import by.work.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -59,6 +57,16 @@ public class ContactController {
         List<Category> categories = categoryService.getAllCategories();
         model.addAttribute("categories", categories);
         return "personalInfo";
+    }
+
+    @GetMapping("/seller/{id}")
+    public String getSellerPage(@PathVariable("id") Long id, Model model){
+        User user = userService.findUserById(id);
+        Contact contact = contactService.findByUser(user);
+        model.addAttribute("contact", contact);
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories", categories);
+        return "seller";
     }
 
     @PostMapping("/saveDetails")

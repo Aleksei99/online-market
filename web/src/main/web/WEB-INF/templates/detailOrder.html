@@ -35,9 +35,14 @@
 </div>
 <h2>Products:</h2>
 <div class="product-item" th:each="product : ${products}">
-    <p>Id of product: <span th:text="${product.id}"></span ></p>
-    <p class="price">Price: <span th:text="${product.price}"></span ></p>
-    <p>Id of seller: <span th:text="${product.seller.id}"></span ></p>
+    <p>Product: <a th:text="${product.name}" th:href="@{/product/{id}(id=${product.id})}"></a ></p>
+    <p class="price">Price: <span th:text="${product.price}"></span >$</p>
+    <p>Seller: <a th:text="${product.seller.name}" th:href="@{/seller/{id}(id=${product.seller.id})}"></a ></p>
+    <div th:each="basket :${baskets}">
+        <div th:if="${basket.productID==product.id}">
+            <p>Count: <span th:text="${basket.count}"></span></p>
+        </div>
+    </div>
 </div>
 <p>Total amount of order is: <span th:text="${order.totalAmount}"></span></p>
 </body>

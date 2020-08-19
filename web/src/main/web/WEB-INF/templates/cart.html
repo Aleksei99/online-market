@@ -16,6 +16,7 @@
         <p th:text="${product.price}"></p><br>
         <input type="number" name="count" onkeypress="return event.charCode >= 48" min="1" th:value="1">
         <input type="hidden" th:value="${product.price}" name="price">
+        <input type="hidden" th:value="${product.id}" name="ids">
     </div>
     <input type="submit" value="Ordering">
 </form>

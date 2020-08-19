@@ -1,10 +1,7 @@
 package by.work.web.controller;
 
 import by.work.database.entity.*;
-import by.work.service.CategoryService;
-import by.work.service.ContactService;
-import by.work.service.OrderService;
-import by.work.service.SubCategoryService;
+import by.work.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,13 +17,15 @@ public class AdminController {
     private final SubCategoryService subCategoryService;
     private final OrderService orderService;
     private final ContactService contactService;
+    private final BasketService basketService;
 
     @Autowired
-    public AdminController(CategoryService categoryService, SubCategoryService subCategoryService, OrderService orderService, ContactService contactService) {
+    public AdminController(CategoryService categoryService, SubCategoryService subCategoryService, OrderService orderService, ContactService contactService, BasketService basketService) {
         this.categoryService = categoryService;
         this.subCategoryService = subCategoryService;
         this.orderService = orderService;
         this.contactService = contactService;
+        this.basketService = basketService;
     }
 
     @ModelAttribute("category")
@@ -85,9 +84,11 @@ public class AdminController {
     @GetMapping("/order/{id}")
     public String showDetails(@PathVariable("id") Long orderId, Model model) {
         Order order =  orderService.findById(orderId);
+        List<Basket> baskets = basketService.findAllByOrderID(orderId);
         User user = order.getUser();
         Set<Product> products = order.getProducts();
         Contact contact = contactService.findByUser(user);
+        model.addAttribute("baskets",baskets);
         model.addAttribute("products",products);
         model.addAttribute("contact",contact);
         model.addAttribute("order",order);

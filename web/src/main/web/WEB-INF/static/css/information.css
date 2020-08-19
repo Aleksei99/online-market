@@ -12,7 +12,7 @@
     left:50px;
 }
 .item p span{
-    position: absolute;
+    position: sticky;
     font-weight: bold;
     left: 200px;
 }

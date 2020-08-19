@@ -9,5 +9,6 @@ import java.util.List;
 @Data
 public class OrderDTO {
     List<BigDecimal> price = new ArrayList<>();
+    List<Long> ids = new ArrayList<>();
     List<Integer> count = new ArrayList<>();
 }

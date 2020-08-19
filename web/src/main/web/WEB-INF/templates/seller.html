@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navBar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/information.css}">
+</head>
+<body>
+<div th:insert="startPage :: bar"></div>
+<p th:if="${contact==null}">No personal info Yet</p>
+<div class="item" th:unless="${contact==null}">
+    <div class="heading">
+        <h1>Personal Information</h1>
+    </div>
+    <p>City:<span th:text="${contact.homeAddress.city}"></span></p>
+    <p>Street:<span th:text="${contact.homeAddress.street}"></span></p>
+    <p>Number of house:<span th:text="${contact.homeAddress.house}"></span></p>
+    <p>Number of flat:<span th:text="${contact.homeAddress.number}"></span></p>
+    <p>Email:<span th:text="${contact.email}"></span></p>
+    <p>Telephone:<span th:text="${contact.telephone}"></span></p>
+</div>
