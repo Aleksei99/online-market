@@ -7,16 +7,16 @@
 </head>
 <body>
 <form th:action="@{/login}" method="post" class="ui-form">
-    <h3>Log In</h3>
+    <h3 th:text="#{login}"></h3>
     <div class="form-row">
-        <input type="text" name="user" id="username" required autocomplete="off"><label for="username">Login</label>
+        <input type="text" name="user" id="username" required autocomplete="off"><label for="username" th:text="#{username}"></label>
     </div>
 
     <div class="form-row">
         <input type="password" name="pass" id="password" required autocomplete="off"><label
-            for="password">Password</label>
+            for="password" th:text="#{Password}"></label>
     </div>
-    <p><input type="submit" value="Log in"></p>
+    <p><input type="submit" th:value="#{login}"></p>
 </form>
 </body>
 </html>

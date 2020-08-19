@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{css/information.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/navBar.css}">
 </head>
 <body>
-<p>Total amount of your order is:</p><span th:text="${order.totalAmount}"></span>
+<div th:insert="startPage :: bar"></div>
+<p th:text="#{amount}"></p><span th:text="${order.totalAmount}"></span>
 <div th:if="${contact==null}">
-    <p>Please add a Contact data</p>
-    <a th:href="@{/editDetails}">Edit Personal information</a>
+    <p th:text="#{pleaseAddCD}"></p>
+    <a th:href="@{/editDetails}" th:text="#{editInformation}"></a>
 </div>
 <div class="item" th:unless="${contact==null}">
     <div th:if="${contact.anotherAddress==false}">
         <div class="heading">
-            <h1>Personal Information</h1>
+            <h1 th:text="#{contactInformation}"></h1>
         </div>
         <p>City:<span th:text="${contact.homeAddress.city}"></span></p>
         <p>Street:<span th:text="${contact.homeAddress.street}"></span></p>
@@ -25,7 +27,7 @@
     </div>
     <div th:if="${contact.anotherAddress==true}">
         <div class="heading">
-            <h1>Personal Information</h1>
+            <h1 th:text="#{contactInformation}"></h1>
         </div>
         <p>City:<span th:text="${contact.otherAddress.city}"></span></p>
         <p>Street:<span th:text="${contact.otherAddress.street}"></span></p>
@@ -37,14 +39,14 @@
 </div>
 <div th:if="${contact.anotherAddress==false}">
     <div class="btn">
-        <a th:href="@{/address/another}">Use another address</a>
-        <a th:href="@{/ordering/confirmed}">Use this</a>
+        <a th:href="@{/address/another}" th:text="#{anotherAddress}"></a>
+        <a th:href="@{/ordering/confirmed}" th:text="#{this}"></a>
     </div>
 </div>
 <div th:if="${contact.anotherAddress==true}">
     <div class="btn">
-        <a th:href="@{/address/home}">Use Home</a>
-        <a th:href="@{/ordering/confirmed}">Use this</a>
+        <a th:href="@{/address/home}" th:text="#{useHome}"></a>
+        <a th:href="@{/ordering/confirmed}" th:text="#{this}"></a>
     </div>
 </div>
 </body>

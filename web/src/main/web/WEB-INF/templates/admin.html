@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:lang="${lang}" th:with="lang=${#locale.language}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -19,39 +19,39 @@
                 <span th:text="${subcat.name}"></span>
             </li>
         </ul>
-        <label for="subcategory">Name of new subCategory</label>
+        <label for="subcategory" th:text="#{admin.subCategory}"></label>
         <input type="text" th:field="*{name}" id="subcategory">
         <input type="text" th:name="id" th:value="${category.id}" hidden>
-        <input type="submit" value="add">
+        <input type="submit" th:value="#{add}">
     </div>
 </form>
 <form class="delete-section" th:action="@{/admin/deleteSubCategory}" method="post">
-    <p class="paragraph">Delete subcategory</p>
+    <p class="paragraph" th:text="#{admin.deleteSubcategory}"></p>
     <select th:name="id">
         <option th:each="subcat : ${subcategories}"
                 th:text="${subcat.name}"
                 th:value="${subcat.id}">
         </option>
     </select>
-    <input type="submit" value="delete">
+    <input type="submit" th:value="#{delete}">
 </form>
 <form class="delete-section2" th:action="@{/admin/deleteCategory}" method="post">
-    <p class="paragraph">Delete category</p>
+    <p class="paragraph" th:text="#{admin.deleteCategory}"></p>
     <select th:name="id">
         <option th:each="cat : ${categories}"
                 th:text="${cat.name}"
                 th:value="${cat.id}">
         </option>
     </select>
-    <input type="submit" value="delete">
+    <input type="submit" th:value="#{delete}">
 </form>
 
 
 <form class="add-section" th:action="@{/admin/addCategory}" method="post" th:object="${category}">
-    <p class="paragraph">Add category</p>
-    <label for="category-form-name">Name of new category</label>
+    <p class="paragraph" th:text="#{admin.addCategory}"></p>
+    <label for="category-form-name" th:text="#{admin.newCategory}"></label>
     <input type="text" th:field="*{name}" id="category-form-name">
-    <input type="submit" onclick="successfullyAdded()" value="Add">
+    <input type="submit" onclick="successfullyAdded()" th:value="#{add}">
 </form>
 </body>
 </html>

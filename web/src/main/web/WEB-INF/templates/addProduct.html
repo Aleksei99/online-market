@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:lang="${lang}" th:with="lang=${#locale.language}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -9,19 +9,19 @@
 <body>
 <div th:insert="startPage :: bar"></div>
 <form th:action="@{/addProduct}" th:object="${product}" method="post" class="ui-form">
-    <h3>New Product</h3>
+    <h3 th:text="#{addProduct.heading}"></h3>
     <div class="form-row">
-        <input type="text" th:field="*{brand}" required autocomplete="off" id="brand"><label for="brand">Brand </label>
+        <input type="text" th:field="*{brand}" required autocomplete="off" id="brand"><label for="brand" th:text="#{addProduct.brand}"></label>
     </div>
     <div class="form-row">
-        <input type="text" th:field="*{name}" required autocomplete="off" id="name"><label for="name">Name </label>
+        <input type="text" th:field="*{name}" required autocomplete="off" id="name"><label for="name" th:text="#{addProduct.name}"> </label>
     </div>
     <div class="form-row">
         <input type="number" name="price" onkeypress="return event.charCode >= 48" min="1" step="0.01" th:value="1" required autocomplete="off" id="price"><label
-            for="price">Price </label>
+            for="price" th:text="#{addProduct.price}"></label>
     </div>
     <div class="form-row">
-        <textarea th:field="*{description}" placeholder="Description..." id="description"></textarea>
+        <textarea th:field="*{description}" th:placeholder="#{addProduct.descr}" id="description"></textarea>
     </div>
     <div class="form-row">
         <select th:name="subCategoryID">
@@ -32,7 +32,7 @@
             </option>
         </select>
     </div>
-    <input type="submit" value="Save">
+    <input type="submit" th:value="#{addProduct.save}">
 </form>
 
 </body>

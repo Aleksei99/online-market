@@ -4,25 +4,26 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/forms.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navBar.css}">
 </head>
 <body>
+<div th:insert="startPage :: bar"></div>
 <form th:action="@{/address/change}" method="post" th:object="${address}" class="ui-form">
-    <h3>Edit Information</h3>
+    <h3 th:text="#{editInformation}"></h3>
     <div class="form-row">
-        <input type="text" th:field="*{city}" required autocomplete="off" id="city"><label for="city">City </label>
+        <input type="text" th:field="*{city}" required autocomplete="off" id="city"><label for="city" th:text="#{city}"> </label>
     </div>
     <div class="form-row">
         <input type="text" th:field="*{street}" required autocomplete="off" id="street"><label
-            for="street">Street </label>
+            for="street" th:text="#{street}"> </label>
     </div>
     <div class="form-row">
-        <input type="text" th:field="*{house}" required autocomplete="off" id="house"><label for="house">House </label>
+        <input type="text" th:field="*{house}" required autocomplete="off" id="house"><label for="house" th:text="#{house}"> </label>
     </div>
     <div class="form-row">
-        <input type="text" th:field="*{number}" required autocomplete="off" id="number"><label for="number">Apartment
-        number </label>
+        <input type="text" th:field="*{number}" required autocomplete="off" id="number"><label for="number" th:text="#{apartmentNumber}"></label>
     </div>
-    <input type="submit" value="Save">
+    <input type="submit" th:value="#{addProduct.save}">
 </form>
 </body>
 </html>

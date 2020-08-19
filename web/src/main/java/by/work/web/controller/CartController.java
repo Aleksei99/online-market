@@ -1,9 +1,11 @@
 package by.work.web.controller;
 
 import by.work.database.entity.Basket;
+import by.work.database.entity.Category;
 import by.work.database.entity.Order;
 import by.work.database.entity.Product;
 import by.work.service.BasketService;
+import by.work.service.CategoryService;
 import by.work.service.OrderService;
 import by.work.service.dto.OrderDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -23,11 +26,13 @@ public class CartController {
 
     private final OrderService orderService;
     private final BasketService basketService;
+    private final CategoryService categoryService;
 
     @Autowired
-    public CartController(OrderService orderService, BasketService basketService) {
+    public CartController(OrderService orderService, BasketService basketService, CategoryService categoryService) {
         this.orderService = orderService;
         this.basketService = basketService;
+        this.categoryService = categoryService;
     }
 
     @ModelAttribute("modelOrder")
@@ -63,6 +68,8 @@ public class CartController {
     @GetMapping("/cart")
     public String getPage(HttpSession session, Model model) {
         Order order = (Order) session.getAttribute("currentOrder");
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories", categories);
         Set<Product> products = order.getProducts();
         model.addAttribute("cartProducts", products);
         return "cart";

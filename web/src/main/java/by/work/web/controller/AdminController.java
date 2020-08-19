@@ -77,6 +77,8 @@ public class AdminController {
     @GetMapping("/admin/orders")
     public String orders(Model model){
         List<Order> orders = orderService.findOrders();
+        List<Category> categories = categoryService.getAllCategories();
+        model.addAttribute("categories",categories);
         model.addAttribute("orders",orders);
         return "orders";
     }
@@ -85,9 +87,11 @@ public class AdminController {
     public String showDetails(@PathVariable("id") Long orderId, Model model) {
         Order order =  orderService.findById(orderId);
         List<Basket> baskets = basketService.findAllByOrderID(orderId);
+        List<Category> categories = categoryService.getAllCategories();
         User user = order.getUser();
         Set<Product> products = order.getProducts();
         Contact contact = contactService.findByUser(user);
+        model.addAttribute("categories",categories);
         model.addAttribute("baskets",baskets);
         model.addAttribute("products",products);
         model.addAttribute("contact",contact);

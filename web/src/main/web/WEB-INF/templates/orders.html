@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navBar.css}">
 </head>
 <body>
-<h1>Orders</h1>
+<div th:insert="startPage :: bar"></div>
+<h1 th:text="#{orders}"></h1>
 <div  th:each="order: ${orders}" th:unless="${orders.isEmpty()}">
     <a th:text="${order.id}" th:href="@{/order/{id}(id=${order.id})}"></a>
 </div>

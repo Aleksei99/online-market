@@ -12,7 +12,7 @@
 
 <div class="navbar" th:fragment="bar">
     <div sec:authorize="isAuthenticated()">
-        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/home}" th:text="#{Home}"></a>
     </div>
     <div class="dropdown">
         <button class="dropbtn">Products
@@ -32,35 +32,35 @@
         <a href="?language=en_EN">English</a>
     </div>
     <div sec:authorize="hasAuthority('ADMIN')">
-        <a th:href="@{/admin}">Edit Categories</a>
-        <a th:href="@{/admin/orders}">Orders</a>
+        <a th:href="@{/admin}" th:text="#{editCategories}"></a>
+        <a th:href="@{/admin/orders}" th:text="#{orders}"></a>
     </div>
     <div sec:authorize="hasAuthority('SELLER')">
-        <a th:href="@{/addProduct}">Add Product</a>
+        <a th:href="@{/addProduct}" th:text="#{addProduct}"></a>
     </div>
     <div sec:authorize="isAuthenticated()">
-        <a th:href="@{/info}">Personal info</a>
-        <a href="javascript: document.logoutForm.submit()" class="right"> Logout</a>
+        <a th:href="@{/info}" th:text="#{contactInformation}"></a>
+        <a href="javascript: document.logoutForm.submit()" class="right" th:text="#{Logout}"></a>
 
         <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
             <input hidden type="submit" value="Sign Out"/>
         </form>
     </div>
     <div sec:authorize="not isAuthenticated()">
-        <a href="#" th:href="@{/login}" class="right">Log in</a>
-        <a th:href="@{/registration}" class="right">Sign up</a>
+        <a href="#" th:href="@{/login}" class="right" th:text="#{login}"></a>
+        <a th:href="@{/registration}" class="right" th:text="#{signup}"></a>
     </div>
 
 </div>
 
 <div class="header">
-    <h1>Online market</h1>
-    <p>Quality is when the buyer returns - not the goods</p>
+    <h1 th:text="#{onlinemarket}"></h1>
+    <p th:text="#{slogan}"></p>
 </div>
 
 
-<div class="footer">
-    Developed by Aleksei Smuraha, Halina Shukel, Valeriy Karpov,Yana Vaitovich, Makar Ivanov
+<div class="footer" th:text="#{footer}">
+
 </div>
 
 </body>

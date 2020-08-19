@@ -8,7 +8,7 @@
 </head>
 <body>
 <div th:insert="startPage :: bar"></div>
-<h1>Categories of Products</h1>
+<h1 th:text="#{categoriesPr}"></h1>
 <td>
     <p th:if="${subCategories.isEmpty()}">There are no subCategories</p>
     <div class="subCat" th:each="subCategory: ${subCategories}" th:unless="${subCategories.isEmpty()}">

@@ -11,7 +11,7 @@
 <p th:if="${contact==null}">No personal info Yet</p>
 <div class="item" th:unless="${contact==null}">
     <div class="heading">
-        <h1>Personal Information</h1>
+        <h1 th:text="#{contactInformation}"></h1>
     </div>
     <p>City:<span th:text="${contact.homeAddress.city}"></span></p>
     <p>Street:<span th:text="${contact.homeAddress.street}"></span></p>
@@ -21,7 +21,7 @@
     <p>Telephone:<span th:text="${contact.telephone}"></span></p>
 </div>
 <div class="btn">
-    <a th:href="@{/editDetails}">Edit Personal information</a>
+    <a th:href="@{/editDetails}" th:text="#{editInformation}"></a>
 </div>
 </body>
 </html>

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 @Controller
-public class SellerAdd {
+public class SellerController {
 
     private final CategoryService categoryService;
     private final ProductService productService;
@@ -27,7 +27,7 @@ public class SellerAdd {
     private final UserService userService;
 
     @Autowired
-    public SellerAdd(CategoryService categoryService, ProductService productService, SubCategoryService subCategoryService, UserService userService) {
+    public SellerController(CategoryService categoryService, ProductService productService, SubCategoryService subCategoryService, UserService userService) {
         this.categoryService = categoryService;
         this.productService = productService;
         this.subCategoryService = subCategoryService;

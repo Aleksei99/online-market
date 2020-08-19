@@ -10,7 +10,7 @@
 <div th:insert="startPage :: bar"></div>
 <div class="item" >
     <div class="heading">
-        <h1>Product Information</h1>
+        <h1 th:text="#{pr.Information}"></h1>
     </div>
     <p>Name:<span th:text="${product.name}"></span></p>
     <p>Brand:<span th:text="${product.brand}"></span></p>

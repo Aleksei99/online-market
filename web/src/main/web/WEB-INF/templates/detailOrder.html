@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:lang="${lang}" th:with="lang=${#locale.language}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/information.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/orderedProducts.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/navBar.css}">
 </head>
 <body>
+<div th:insert="startPage :: bar"></div>
 <div class="item" th:if="${contact.anotherAddress==false}">
     <div class="heading">
-        <h1>Contact Information</h1>
+        <h1 th:text="#{contactInformation}"></h1>
     </div>
     <p>Name:<span th:text="${order.user.name}"></span></p>
     <p>Surname:<span th:text="${order.user.surname}"></span></p>
@@ -22,7 +24,7 @@
 </div>
 <div class="item" th:if="${contact.anotherAddress==true}">
     <div class="heading">
-        <h1>Contact Information</h1>
+        <h1 th:text="#{contactInformation}"></h1>
     </div>
     <p>Name:<span th:text="${order.user.name}"></span></p>
     <p>Surname:<span th:text="${order.user.surname}"></span></p>
@@ -33,7 +35,7 @@
     <p>Email:<span th:text="${contact.email}"></span></p>
     <p>Telephone:<span th:text="${contact.telephone}"></span></p>
 </div>
-<h2>Products:</h2>
+<h2 th:text="#{products}"></h2>
 <div class="product-item" th:each="product : ${products}">
     <p>Product: <a th:text="${product.name}" th:href="@{/product/{id}(id=${product.id})}"></a ></p>
     <p class="price">Price: <span th:text="${product.price}"></span >$</p>
